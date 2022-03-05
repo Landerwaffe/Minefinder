@@ -1,0 +1,88 @@
+<!-- This is the main page for a board -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id = "board" class = "board" >
+    <div class = title>
+    <h1>{{ board.title|title }}</h1>
+    <!-- <p>{{board.id}}</p> -->
+    </div>
+
+    <p>{% if board.description != None %}{{board.description}}{% endif %}</p>
+
+    <h4>Board Members:</h2>
+    <ul>
+    {% for m in members %}
+        <li>{{ forloop.counter }} - {{ m.member }}</li>
+    {% endfor %}
+    </ul>
+
+
+
+    <div class = "todo">
+        {% for list in lists %} 
+            <div class = 'list'>{{list.listtitle}}           
+            {% for card in cards %}
+                {% if card.list_id == list.id %}                       
+                            <div class = 'card'><p id = {{card.id}} onclick = "openTask()">{{card.cardtitle}}</p></div>
+                {% endif %}
+            {% endfor %}
+        </div>            
+        {% endfor %}
+    </div>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+      
+          <form action = "" method = "POST">
+              {% csrf_token %}
+              <p>Add Card:</p>
+              {{ formtask }}
+              <input type="submit" value="Submit">
+          </form>
+            {% for task in tasks %}            
+                    {% if requestlist.0.taskquery == task.card_id %}
+                            
+                                <div class = 'card'>{{task.name}} belonging to card {{task.card_id}}</div>
+                    <!-- Maybe try submitting a hidden form with the card id on button click,  then drawing the requestID variable from database -->
+                    {% endif %} 
+            {% endfor %}
+        </div>
+    </div>
+
+    <p><br><br><br></p>
+
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <p>Add List:</p>
+    {{ formlist }}
+    <input type="submit" value="Submit">
+</form>
+
+<p><br></p>
+
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <p>Add Card:</p>
+    {{ formcard }}
+    <input type="submit" value="Submit">
+</form>
+
+<form action = "" method = "POST" id = "formpost" hidden>
+    {% csrf_token %}
+    <p>Add Request:</p>
+    {{ formrequest }}
+    <input type="submit" value="Submit">
+</form>
+
+<p>Request query is : {{requestobject}}</p>
+<p>Request list is: {{requestlist.0.taskquery}}</p>
+<p onclick = "submitForm()">LOG</p>
+<p onclick = "submitForm2()">BARSE</p>
+
+<!-- want to return ID onclick using DOM to the form request and hide the form -->
+{% endblock %}

@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'users',
     'home',
     'faq',
+    'board',
+    'tasks'
 ]
 
 MIDDLEWARE = [
@@ -78,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todo.wsgi.application'
+WSGI_APPLICATION = 'todo.wsgi.application' 
 ASGI_APPLICATION = 'todo.asgi.application'
 
 CHANNEL_LAYERS = {
@@ -88,6 +90,8 @@ CHANNEL_LAYERS = {
 }
 
 # Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 DATABASES = {
     # Host the database via XAMPP on localhost:3306, follow instructions in .DB/PMDB.sql commenting.
     'default': {
@@ -103,6 +107,9 @@ DATABASES = {
     }
 }
 
+
+# Password validation
+# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -120,7 +127,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+# Internationalization
+# https://docs.djangoproject.com/en/3.0/topics/i18n/
+
+LANGUAGE_CODE = 'en-AU'
 
 TIME_ZONE = 'Australia/Queensland'
 
@@ -134,12 +144,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join('staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join('static'),
+    os.path.join(BASE_DIR, 'assets'),
 )
 
 MEDIA_URL = '/media/'
