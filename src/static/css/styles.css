@@ -1,0 +1,137 @@
+.commenterName {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#scroll-content {
+    max-height: 200px;
+    overflow-y: scroll;
+    padding-right: 10px;
+}
+
+.checkBox { 
+    top: .2rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.attachmentsArea { /* temporary for fixing the height */
+    height: 0rem;
+}
+
+[contentEditable="true"].single-line {
+    white-space: nowrap;
+    max-width: 30rem;
+    overflow: hidden;
+} 
+
+[contentEditable="true"].single-line br {
+    display:none;
+
+}
+[contentEditable="true"].single-line * {
+    display:inline;
+    white-space:nowrap;
+}
+
+input[type=checkbox]:checked + p.strikethrough{
+    text-decoration: line-through;
+    width: auto;
+}
+
+/* 
+input.form-control {
+    position: fixed;
+} */
+
+p.form-control {
+    background: transparent;
+    border: transparent;
+    color: white;
+}
+
+/* Sub Task Pill */
+.sub-task {
+    height: 3rem;
+    font-size: 15px;
+    background: orange;
+    color: white;
+    border-radius: 45px;
+}
+
+/* Rounded tabs */
+@media (min-width: 576px) {
+    .rounded-nav {
+      border-radius: 50rem !important;
+    }
+}
+  
+@media (min-width: 576px) {
+    .rounded-nav .nav-link {
+        border-radius: 50rem !important;
+    }
+}
+
+/* Active Tab-Pill */
+.nav-pills .nav-link.active {
+    background-color: #F79327;
+}
+
+/* Inactive Tab-Pill */
+.nav-pills .nav-link:not(.active) {
+    color: rgba(0, 0, 0, 0.418);
+}
+
+.tab-content {
+    background-color: white;
+}
+
+/* Horizontal Lines */
+hr {
+    border-color: black !important;
+    opacity: 10% !important;
+    border-width: 2px !important;
+}
+
+/* Text Field 
+.form-control {
+    border-radius: 15px;
+}*/
+
+.modal-content {
+    background-color: #EBEBEB;
+    border-radius: 45px; 
+    padding: 10px;
+}
+
+.modal-span {
+    color: white;
+}
+
+/* Comment Bubble */
+.bg-comment {
+    background: rgb(235, 235, 235);
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    
+}
+
+/* Comments Picture Sizing */
+.media img {
+    width: 40px;
+    height: 40px
+}
+
+/* Global Elements which may need to be modified after integration */
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Poppins';
+}

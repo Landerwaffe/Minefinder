@@ -1,0 +1,116 @@
+<!-- This is at the top of every page, likely going to include a logo, search bar, link to logged in user profile etc.-->
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+      <style>
+          *{
+              font-size: 1.5rem;
+            }
+      </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <!--Own CSS-->
+    <link rel="stylesheet" href="D:\VSCode\Orefox_Board_Prototype\boardtest\static\css\navbar.css">
+
+    <!-- Google Fonts Import -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins%22%3E">
+
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static '/images/logo.png' %}">
+
+    <title>Bootstrap Navbar</title>
+  </head>
+  <body>
+      <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Navbar content -->
+        <div class="left-items">
+          <a class="" href="#">
+              <img class="logo-img" src="{% static 'images/logo.png' %}" width="150" height="60" alt="Logo">
+          </a>
+          
+          <!--Nav links-->
+          <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Boards</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'home' %}">Home</a>
+                    <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="dropdown-item" href="{% url 'card' %}">Card</a>
+                    <div class="dropdown-divider"></div>
+                    {% for boards in board %}
+                    <a class="dropdown-item" href="b/{{forloop.counter}}">{{boards.title}}</a>
+                    {% endfor %}
+                  </div>
+              </li>
+          </ul>
+
+          <!--Search-->
+          <div class="input-wrapper">
+            <input class="search-input" type="text" placeholder="Search...">
+            <button class="bi bi-search nav-icon"></button>
+          </div>
+        </div> <!--end left-items-->
+
+        <!--right alinged items-->
+        <div class="right-items ml-auto">
+          <button type="button" class="bi bi-plus-circle nav-icon" data-toggle="modal" data-target="#newBoardModal"></button>
+          <button class="bi bi-exclamation-circle nav-icon"></button>
+          <button class="bi bi-bell nav-icon"></button>
+          <button class="bi bi-person-circle nav-icon"></button>
+        </div>
+    </nav>
+    <!--End Navbar-->
+
+    <!-- Modal -->
+    <div class="modal fade" id="newBoardModal" tabindex="-1" role="dialog" aria-labelledby="newBoardModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create New Board</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Bord Name</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    
+                    <label for="" class="form-label">Author</label>
+                    <select class="form-control" aria-label="Default select example" style="margin-bottom: 5px;">
+                        <option disabled selected>...</option>
+                        <option value="2">Josh Test</option>
+                    </select>
+    
+                    <label for="" class="form-label">Description</label>
+                    <textarea class="form-control" name="" id=""></textarea>
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary modal-btn-primary">Create Board</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
