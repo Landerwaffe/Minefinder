@@ -29,7 +29,8 @@ urlpatterns = [
     path('b/<int:board_id>/', board_view, name = "board-main"),
     path('admin/', admin.site.urls),
     path('card/', card_view, name="card"),
-    path('profile/', profile_view, name = 'profile')
+    path('profile/', profile_view, name = 'profile'),
+    path('splash/', splash_view, name = 'splash')
     # path('task/<int:task_id>/', task_view, name = 'task')
 ]
 

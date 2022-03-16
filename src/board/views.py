@@ -272,4 +272,14 @@ def task_view(request, task_id, *args, **kwargs):
     
     return error_view(request, "Board Not Found")
 
+def splash_view(request, *args, **kwargs):
+    """
+    Splash View
+    -----------
+
+    The homepage in the minefinder draft, internal name is splash to prevent conflicts with the board home page.
+    """
+
+    return render(request, "splash.html")
+
 

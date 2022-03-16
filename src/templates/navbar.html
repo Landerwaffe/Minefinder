@@ -1,10 +1,19 @@
 <!-- This is at the top of every page, likely going to include a logo, search bar, link to logged in user profile etc.-->
 
-<div class="w3-container w3-black">
-    <img src="https://orefox.com/templates/rt_aurora/custom/images/OreFox_web_logo-white.png" alt="OreFox Icon" style="float:left;padding:14px;background-color:black;" width=200 height=100>
-    <p style = "float:left;">Hello <i>{{request.user}}</i> how are you?</p>
-    <p style = "float:left;">Board Name: {{request.POST.title}}<p>
-    <a style = "float:right;" href="profile/" >{{request.user}}'s profile</a>
+{% load static %}
+
+<div class="w3-container w3-white">
+    <img src="{% static 'images/logonew.png' %}" alt="OreFox Icon" style="float:left;padding-top:28px;padding-bottom:28px;padding-left:28px;background-color:white;" width=300 height=120>
+    <!-- <p style = "float:right;">Hello<i>{{request.user}}</i> how are you?</p>
+    <p style = "float:right;">Board Name: {{request.POST.title}}<p>
+    <a style = "float:right;" href="profile/" >{{request.user}}'s profile</a> -->
+    <p style = "float:right;">EN</p>
+    <a style = "float:right;" href="profile/">{{request.user}}@gmail.com</a>
+    <p style = "float:right;">Projects</p>
+    <p style = "float:right;">FAQ</p>
+    <p style = "float:right;">Deal Room</p>
+    <p style = "float:right;">Gallery</p>
+    <p style = "float:right;">Upload Project</p>
 </div>
 
 
