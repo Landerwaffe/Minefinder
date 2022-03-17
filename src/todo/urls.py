@@ -22,7 +22,7 @@ from tasks.views import *
 
 
 urlpatterns = [
-    path('', home_view, name = 'home'),
+    path('legacyhome/', home_view, name = 'legacyhome'),
     path('login/', login_view, name = "login"),
     path('register/', registration_view, name = "register"),
     path('dashboard/', dashboard_view, name = 'dashboard'),
@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('card/', card_view, name="card"),
     path('profile/', profile_view, name = 'profile'),
-    path('splash/', splash_view, name = 'splash')
+    path('', splash_view, name = 'home')
     # path('task/<int:task_id>/', task_view, name = 'task')
 ]
 
