@@ -22,4 +22,14 @@ urlpatterns = [
     re_path(r'media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
     re_path('.*', http404),
+    path('legacyhome/', home_view, name = 'legacyhome'),
+    path('login/', login_view, name = "login"),
+    path('register/', registration_view, name = "register"),
+    path('dashboard/', dashboard_view, name = 'dashboard'),
+    path('b/<int:board_id>/', board_view, name = "board-main"),
+    path('admin/', admin.site.urls),
+    path('card/', card_view, name="card"),
+    path('profile/', profile_view, name = 'profile'),
+    path('', splash_view, name = 'home')
+    # path('task/<int:task_id>/', task_view, name = 'task')
 ]
