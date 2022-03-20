@@ -34,3 +34,8 @@ class RequestForm(forms.ModelForm):
 	class Meta:
 		model = Request 
 		fields = '__all__'
+
+class LoginForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = ['name','password']
