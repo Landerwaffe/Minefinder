@@ -291,3 +291,25 @@ class Request(models.Model):
     Workaround model to detect what tasks users click on by submitting and reading a form everytime they click tasks.
     """
     taskquery = models.IntegerField('taskquery', default = 0)
+
+class User(models.Model):
+    """
+    User Model
+    ----------
+
+    This is the MineFinder user class, created new so old code isn't disturbed. Will delete useless code later.
+    """
+    name          = models.CharField(max_length = 30, blank = True)
+    user          = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    email         = models.CharField(blank=False, max_length = 50)
+    contact       = models.IntegerField(blank=True)
+    authenticated = models.BooleanField(default = False)
+    company       = models.CharField(max_length = 30, blank=True)
+    tier          = models.BooleanField(default = False)
+    password      = models.CharField(max_length = 30)
+
+    class Meta:
+        ordering = ('user', )
+
+    def __str__(self):
+        return self.user.name   
