@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 
 # from tasks.views import *
 from board.views import *
 from tasks.views import *
-
+from chat.views import *
 
 urlpatterns = [
     path('legacyhome/', home_view, name = 'legacyhome'),
@@ -30,7 +31,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('card/', card_view, name="card"),
     path('profile/', profile_view, name = 'profile'),
-    path('', splash_view, name = 'home')
+    path('', splash_view, name = 'home'),
+    path('chat/', include('chat.urls')),
     # path('task/<int:task_id>/', task_view, name = 'task')
 ]
 
