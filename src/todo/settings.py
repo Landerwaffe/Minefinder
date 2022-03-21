@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'board',
     'tasks',
     'channels',
-    'chat',
+    'chat'
 ]
 
 MIDDLEWARE = [
@@ -87,9 +87,9 @@ DATABASES = {
     # Host the database via XAMPP on localhost:3306, follow instructions in .DB/PMDB.sql commenting.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'localhost',
+        'NAME': 'pmdb',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
