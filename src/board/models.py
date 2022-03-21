@@ -300,7 +300,7 @@ class User(models.Model):
     This is the MineFinder user class, created new so old code isn't disturbed. Will delete useless code later.
     """
     name          = models.CharField(max_length = 30, blank = True)
-    user          = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user          = models.CharField(max_length = 30, blank = True)
     email         = models.CharField(blank=False, max_length = 50)
     contact       = models.IntegerField(blank=True)
     authenticated = models.BooleanField(default = False)

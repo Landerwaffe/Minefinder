@@ -209,28 +209,18 @@ def registration_view(request, *args, **kwargs):
     needing the Django Admin dashboard.
     """
     if request.method == 'POST':
-        email = request.POST['email']
-        username = request.POST['username']
-        password = request.POST['password']
-
-        # Not sure if this does any authentication checks, e.g. if a user already exists
-        user = UserManager.objects.create_user(username=username, password=password, email=email)
-
-        # This should be none if the create_user didn't work, though looking at the code within the 
-        # UserManager object, create_user doesn't do any authentication checks, so I guess this will
-        # require some testing/rejigging.
-        if user is not None:
-            # I suppose we want to login immediately after, though in the real world we'd want to sent an e-mail
-            # token to stop bots from spam-creating user accounts.
-            auth.login(request, user)
-
-            # Redirect to the users dashboard
-            return redirect('/dashboard/') 
-        else:
-            return error_view(request, "Invalid Credentials")
+        print(request.POST)
+        formlogin = LoginForm(request.POST)
+        print (formlogin)
+        if formlogin.is_valid():
+            print('FORM IS SAVED')
+            formlogin.save()
     else:
-        return render(request, "register.html", {
-            "title" : 'Register'
+        formlogin = LoginForm()
+
+    return render(request, "register.html", {
+            "title" : 'Register',
+            "formlogin" :  formlogin
         })
 
 def profile_view(request, *args, **kwargs):

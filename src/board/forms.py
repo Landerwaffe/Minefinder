@@ -38,4 +38,4 @@ class RequestForm(forms.ModelForm):
 class LoginForm(forms.ModelForm):
 	class Meta:
 		model = User
-		fields = ['name','password']
+		fields = ['user','password']
