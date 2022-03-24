@@ -25,7 +25,7 @@ SECRET_KEY = 'd*t_(9f%02$gp32&692fe!hxsjbyqauot(2o@kw163-c&bg17r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','192.168.0.30']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'board',
     'tasks',
     'channels',
-    'chat'
+    'chat',
+    'gallery',
 ]
 
 MIDDLEWARE = [
