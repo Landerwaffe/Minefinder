@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'board',
     'tasks',
     'channels',
-    'chat'
+    'chat',
+    'gallery',
 ]
 
 MIDDLEWARE = [
