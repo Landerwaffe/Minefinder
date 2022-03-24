@@ -302,7 +302,7 @@ class User(models.Model):
     name          = models.CharField(max_length = 30, blank = True)
     user          = models.CharField(max_length = 30, blank = True)
     email         = models.CharField(blank=False, max_length = 50)
-    contact       = models.IntegerField(blank=True)
+    contact       = models.IntegerField(blank=True, default = 0)
     authenticated = models.BooleanField(default = False)
     company       = models.CharField(max_length = 30, blank=True)
     tier          = models.BooleanField(default = False)
