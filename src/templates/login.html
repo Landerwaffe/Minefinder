@@ -7,8 +7,15 @@
 <div class = "splash-image">
     <img src="{% static 'images/darksplash2.png' %}" alt="OreFox Icon" style="background-color:white;object-fit:fill;" width=2560 height=1440>
     <div style = "width: 50%; color: white; background-color: #5C3D2E; height: 100%;opacity: 90%; position: absolute; top: 0%;">
-        <p style="width:100%; padding-top: 20%; font-size: 36px;"><b>Log in to <span style = "color: #B85C38;">MineFinder</span></b></p>
+        <p style="width:100%; padding-top: 20%; font-size: 36px;"><b>Login into <span style = "color: #B85C38;">MineFinder</span></b></p>
     </div>
 </div>
+
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <p>Login into MineFinder:</p>
+    {{ formlogin }}
+    <input type="submit" value="Submit">
+</form>
 
 {% endblock %}

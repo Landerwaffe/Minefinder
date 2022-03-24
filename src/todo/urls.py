@@ -26,7 +26,7 @@ urlpatterns = [
             {'document_root': settings.MEDIA_ROOT}),
     re_path('.*', http404),
     path('legacyhome/', home_view, name = 'legacyhome'),
-    path('login/', login_view, name = "login"),
+    # path('login/', login_view, name = "login"),
     path('register/', registration_view, name = "register"),
     path('dashboard/', dashboard_view, name = 'dashboard'),
     path('b/<int:board_id>/', board_view, name = "board-main"),
@@ -35,5 +35,17 @@ urlpatterns = [
     path('profile/', profile_view, name = 'profile'),
     path('', splash_view, name = 'home'),
     path('chat/', include('chat.urls')),
-    # path('task/<int:task_id>/', task_view, name = 'task')
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/login', login_view, name = "djangologin")
+
+    # Paths provided by django.contrib.auth.urls
+
+    # accounts/login/ [name='login']
+    # accounts/logout/ [name='logout']
+    # accounts/password_change/ [name='password_change']
+    # accounts/password_change/done/ [name='password_change_done']
+    # accounts/password_reset/ [name='password_reset']
+    # accounts/password_reset/done/ [name='password_reset_done']
+    # accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+    # accounts/reset/done/ [name='password_reset_complete']
 ]
