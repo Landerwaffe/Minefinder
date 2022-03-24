@@ -170,30 +170,19 @@ def login_view(request, *args, **kwargs):
     the general login page.
     """
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = auth.authenticate(username=username, password=password)
-
-        if user is not None:
-            if user.is_active:
-                auth.login(request, user)
-                return redirect('/dashboard/') # Redirect to a success page.
-            else:
-                return error_view(request, "Account Disabled") # Return a 'disabled account' error message
-        else:
-            # Return an 'invalid login' error message.
-            return redirect('/')
-
-    # If we're already logged in we don't need to see this page
-    elif request.user is not None:
-        return redirect('/dashboard/')
-    
-    # Otherwise show login page
+        print(request.POST)
+        formlogin = LoginForm(request.POST)
+        print (formlogin)
+        if formlogin.is_valid():
+            print('FORM IS SAVED')
+            formlogin.save()
     else:
-        return render(request, "login.html", {
+        formlogin = LoginForm()
+
+
+    return render(request, "login.html", {
             "title" : 'Login'
-        })
+    })
 
 @login_required(login_url='/login/')
 def logout_view(request):
@@ -240,27 +229,21 @@ def task_view(request, task_id, *args, **kwargs):
 
     Pop-up with details of the sub-tasks, with attachments, descriptions, should have a UI element that is rendered by the card class to display data inside like task completion.
     """
-    try:
-        task = Task.objects.get(id=task_id)
-        members = task.get_members()
-        lists = task.get_lists()
-        cards = task.get_cards()
-
-        # Show the website to users who are authenticated and a member of the board or a member of staff
-        if request.user.is_authenticated and (request.user == board.author or request.user.is_staff or request.user.id in members.values_list('member', flat=True)):
-
-            return render(request, "task.html", {
-                "name": task.name,
-                "task": task,
-                "members": members,
-                "lists": lists,
-                "cards": cards,
-            })
-
-    except ObjectDoesNotExist: 
-        pass
     
-    return error_view(request, "Board Not Found")
+    task = Task.objects.get(id=task_id)
+    members = task.get_members()
+    lists = task.get_lists()
+    cards = task.get_cards()
+
+    # Show the website to users who are authenticated and a member of the board or a member of staff
+
+    return render(request, "task.html", {
+        "name": task.name,
+        "task": task,
+        "members": members,
+        "lists": lists,
+        "cards": cards,
+    })
 
 def splash_view(request, *args, **kwargs):
     """
