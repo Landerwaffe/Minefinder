@@ -1,7 +1,93 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .w{
+            width: 2000px;
+            margin: 0 auto;
+        }
+        .item{
+            width: 33%;
+            float: left;
+        }
+        .item img{
+            width: 100%;
+        }
+    </style>
+</head>
 
-<div style="color: #1b1b1b">
-    <h3>This is a view test for gallery</h3>
-</div>
+<body>
+    <div>Images flood test</div>
+    <div class="w" id="container">
+            <div class="item">
+
+            </div>
+            <div class="item">
+
+            </div>
+            <div class="item">
+
+            </div>
+<!--            <div class="item">-->
+
+<!--            </div>-->
+    </div>
+    <script src="/static/js/jquery-3.4.0.min.js"></script>
+    <script>
+        $(function () {
+            var obj=new ScrollImg();
+            obj.initImg();
+            obj.scrollEvent();
+        })
+
+        function ScrollImg(){
+            this.nid=0;
+            this.lastpostion=0;
+            this.initImg=function () {
+                var that =this;
+                $.ajax({
+                    url:'/gallery/get_imgs',
+                    type:'GET',
+                    data:{nid:that.nid},
+                    dataType:'JSON',
+                    success:function (arg) {
+                        var img_list=arg.data;
+                        $.each(img_list,function (index,v) {
+                            //index,v is images
+                            var eqv=(index+that.lastpostion) % 3;
+                            var tag =document.createElement('img');
+                            var div = document.createElement('div');
+                            //image
+                            tag.src='/'+v.src;
+                            var p1 = document.createElement('p');
+                            //title
+                            p1.innerText = v.title;
+                            //div.appendChild(p1);
+                            $('#container').children().eq(eqv).append(tag,div);
+                            //While to the last image, copy the image id to NID
+                            if(index+1==img_list.length){
+                                //that.nid=v.id;
+                                that.lastpostion=eqv+1;
+                            }
+                        })
+                    }
+                })
+            };
+            this.scrollEvent=function () {
+                var that=this;
+                $(window).scroll(function () {
+                    var docHeight=$(document).height();
+                    var winHeight=$(window).height();
+                    var scrollTop=$(window).scrollTop();
+                    if (winHeight+scrollTop==docHeight){
+                        that.initImg();
+                    }
+                })
+            }
+        }
+    </script>
+</body>
 {% endblock %}
