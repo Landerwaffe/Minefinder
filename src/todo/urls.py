@@ -36,7 +36,8 @@ urlpatterns = [
     path('', splash_view, name = 'home'),
     path('chat/', include('chat.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login', login_view, name = "djangologin")
+    path('accounts/login', login_view, name = "djangologin"),
+    path('', include('gallery.urls')),
 
     # Paths provided by django.contrib.auth.urls
 
