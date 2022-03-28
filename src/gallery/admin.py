@@ -9,4 +9,6 @@ class ImgAdmin(admin.ModelAdmin):
 
     search_fields = ['title']
 
+    readonly_fields = ['create_time']
+
     list_per_page = 10

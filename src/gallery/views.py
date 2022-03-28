@@ -16,10 +16,9 @@ class Gallery(View):
 
     def get_imgs(request):
         nid = request.GET.get('nid')
-        img_list = Img.objects.filter(id__gt=nid).values('id', 'src', 'title').order_by('id')
+        img_list = Img.objects.filter(id__gt=nid).values('id', 'src', 'title').order_by('title')
         img_list = list(img_list)
         ret = {
-            'status': True,
-            'data': img_list
+            'data': img_list,
         }
         return JsonResponse(ret)
