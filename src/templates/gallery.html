@@ -3,15 +3,15 @@
 {% block content %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
     <style>
         .w{
             width: 2000px;
             margin: 0 auto;
         }
         .item{
-            width: 33%;
+            width: 25%;
             float: left;
+            padding-left: 5px;
         }
         .item img{
             width: 100%;
@@ -31,9 +31,9 @@
             <div class="item">
 
             </div>
-<!--            <div class="item">-->
+            <div class="item">
 
-<!--            </div>-->
+            </div>
     </div>
     <script src="/static/js/jquery-3.4.0.min.js"></script>
     <script>
@@ -57,7 +57,7 @@
                         var img_list=arg.data;
                         $.each(img_list,function (index,v) {
                             //index,v is images
-                            var eqv=(index+that.lastpostion) % 3;
+                            var eqv=(index+that.lastpostion) % 4;
                             var tag =document.createElement('img');
                             var div = document.createElement('div');
                             //image
