@@ -7,8 +7,37 @@
 
 <img src="{% static 'images/Bac.jpg' %}" alt="background" style="background-color:white;object-fit:fill;" width=2560 height=810>
 
-<div class = "w3-container w3-white" style = "height: 80%;">
-    <p >Test</p>
+<div class = "w3-container w3-white" style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px;">
+    <p style = "float: left; width: 90%; height: 2560px;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50px; position:relative;">
+        <img src="{% static 'images/profile.png' %}" alt="meeting" style = "width:10%; left: 3%; position: absolute;"></img>
+        <p style = "top: 11.5%; left: 11.2%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <hr style = "height: 96%; width: 3px; background-color: #B4B4B4; position: absolute; left: 20%;">
+        <hr style = "height: 3px; width: 14%; background-color: #B4B4B4; position: absolute; top: 12%; left: 5.75%;">
+        <p style = "top: 1.5%; left: 29%; position: absolute; padding: 0px;"><b>General Account Settings</b></p>
+        <p style = "top: 4%; left: 32%; position: absolute; padding: 0px;">Name</p>
+        <p style = "top: 4%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 8%; left: 31.25%; position: absolute; padding: 0px;">Username</p>
+        <p style = "top: 8%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 12%; left: 32%; position: absolute; padding: 0px;">Email</p>
+        <p style = "top: 12%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 16%; left: 31.6%; position: absolute; padding: 0px;">Contact</p>
+        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <!-- <br><button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px;">Search Projects</button> -->
+
+        <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>
+        <p style = "top: 35%; left: 31.25%; position: absolute; padding: 0px;">Authenticated</p>
+        <p style = "top: 35%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 37%; left: 31.25%; position: absolute; padding: 0px;">Company Name</p>
+        <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+
+        <p style = "top: 66%; left: 29%; position: absolute; padding: 0px;"><b>Security</b></p>
+        <p style = "top: 68%; left: 31.25%; position: absolute; padding: 0px;">User Tiering</p>
+        <p style = "top: 70%; left: 31.25%; position: absolute; padding: 0px;">Password</p>
+
+        <form method='get' action='#'>
+            <button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px; position: absolute; top: 90%; left: 9.1%;" name = "Exit" value = "Exit">Sign Out</button>
+        </form>
+    </p>
 </div>
 {% endblock %}
 
