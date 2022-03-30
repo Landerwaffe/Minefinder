@@ -5,6 +5,8 @@ import django.contrib.auth as auth
 from django.http import HttpResponseRedirect
 
 from django.contrib.auth.models import *
+from django.contrib.auth.forms import *
+from django.contrib.auth import login, logout
 from .models import *
 from .forms import *
 
@@ -171,17 +173,19 @@ def login_view(request, *args, **kwargs):
     """
     if request.method == 'POST':
         print(request.POST)
-        formlogin = LoginForm(request.POST)
+        formlogin = AuthenticationForm(data = request.POST)
         print (formlogin)
         if formlogin.is_valid():
-            print('FORM IS SAVED')
-            formlogin.save()
+            print('FORM IS SENT')
+            user = formlogin.get_user()
+            login(request, user)
     else:
-        formlogin = LoginForm()
+        formlogin = AuthenticationForm()
 
 
     return render(request, "login.html", {
-            "title" : 'Login'
+            "title" : 'Login',
+            "formlogin" : formlogin
     })
 
 @login_required(login_url='/login/')
@@ -199,13 +203,13 @@ def registration_view(request, *args, **kwargs):
     """
     if request.method == 'POST':
         print(request.POST)
-        formlogin = LoginForm(request.POST)
+        formlogin = UserCreationForm(request.POST)
         print (formlogin)
         if formlogin.is_valid():
             print('FORM IS SAVED')
             formlogin.save()
     else:
-        formlogin = LoginForm()
+        formlogin = UserCreationForm()
 
     return render(request, "register.html", {
             "title" : 'Register',
@@ -220,6 +224,9 @@ def profile_view(request, *args, **kwargs):
     This is the profile page for the currently logged in user, I'm implementing it as it was mentioned in navbar.
     """
     my_name = "Jonathan"
+    if request.GET.get('Exit') == 'Exit':
+        logout(request)
+
     return render(request, 'profile.html', {"my_nam": my_name})
 
 def task_view(request, task_id, *args, **kwargs):
