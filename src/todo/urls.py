@@ -34,14 +34,8 @@ urlpatterns = [
     path('card/', card_view, name="card"),
     path('profile/', profile_view, name = 'profile'),
     path('', splash_view, name = 'home'),
-<<<<<<< Updated upstream
     path('chat/', include('chat.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/login', login_view, name = "djangologin"),
     path('', include('gallery.urls')),
-=======
-    path('chat/', include('chat.urls'))
->>>>>>> Stashed changes
 
     # Paths provided by django.contrib.auth.urls
 
