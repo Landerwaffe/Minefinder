@@ -83,7 +83,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todo.wsgi.application' 
+AUTH_USER_MODEL = "board.Account"
+
+AUTHENTICATION_BACKENDS = (
+    ('django.contrib.auth.backends.ModelBackend'),
+)
+
+WSGI_APPLICATION = 'todo.wsgi.application'
 ASGI_APPLICATION = 'todo.asgi.application'
 
 CHANNEL_LAYERS = {
