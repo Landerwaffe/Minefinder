@@ -83,8 +83,6 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = "board.Account"
-
 AUTHENTICATION_BACKENDS = (
     ('django.contrib.auth.backends.ModelBackend'),
 )
