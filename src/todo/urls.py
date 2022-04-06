@@ -31,20 +31,14 @@ urlpatterns = [
     path('dashboard/', dashboard_view, name = 'dashboard'),
     path('b/<int:board_id>/', board_view, name = "board-main"),
     path('admin/', admin.site.urls),
-    path('card/', card_view, name="card"),
-    path('profile/', profile_view, name = 'profile'),
-    path('', splash_view, name = 'home'),
+    path("", include("home.urls")),
+    # users
+    path("users/", include("users.urls")),
+    # ckeditor
+    path(r'ckeditor/', include('ckeditor_uploader.urls')),
     path('chat/', include('chat.urls')),
-    path('', include('gallery.urls')),
-
-    # Paths provided by django.contrib.auth.urls
-
-    # accounts/login/ [name='login']
-    # accounts/logout/ [name='logout']
-    # accounts/password_change/ [name='password_change']
-    # accounts/password_change/done/ [name='password_change_done']
-    # accounts/password_reset/ [name='password_reset']
-    # accounts/password_reset/done/ [name='password_reset_done']
-    # accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
-    # accounts/reset/done/ [name='password_reset_complete']
+    # media
+    re_path(r'media/(?P<path>.*)$', serve,
+            {'document_root': settings.MEDIA_ROOT}),
+    re_path('.*', http404),
 ]
