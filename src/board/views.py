@@ -109,5 +109,19 @@ def projects_view(request, *args, **kwargs):
 
     A list of publicly available projects.
     """
+    projects = Project.objects.all()
 
-    return render(request, "projects.html")
+    if request.method == 'POST':
+        print(request.POST)
+        projectsform = ProjectForm(request.POST)
+        print (projectsform)
+        if projectsform.is_valid():
+            print('FORM IS SAVED')
+            projectsform.save()
+    else:
+        projectsform = ProjectForm()
+
+    return render(request, "projects.html", {
+        "projectsform": projectsform,
+        "projects": projects,
+    })
