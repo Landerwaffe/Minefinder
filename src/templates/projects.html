@@ -4,7 +4,19 @@
 
 {% load static %}
 
+<p>Projects Page</p>
 
-ss
+<p>Test:</p>
+{% for project in projects %}
+    {{project.name}}
+    {{project.image}}
+{% endfor %}
+
+<form action = "" method = "POST">
+    {% csrf_token %}
+    {{ projectsform.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
 
 {% endblock %}

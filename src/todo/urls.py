@@ -28,11 +28,8 @@ def http404(request):
     raise Http404('404')
 
 urlpatterns = [
-    path('legacyhome/', home_view, name = 'legacyhome'),
     path('login/', login_view, name = "login"),
     path('register/', registration_view, name = "register"),
-    path('dashboard/', dashboard_view, name = 'dashboard'),
-    path('b/<int:board_id>/', board_view, name = "board-main"),
     path('admin/', admin.site.urls),
     path('card/', card_view, name="card"),
     path('profile/', profile_view, name = 'profile'),
@@ -53,5 +50,18 @@ urlpatterns = [
     re_path(r'media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
     re_path('.*', http404),
+    path('', include('gallery.urls')),
+    path('projects/', projects_view, name='projects')
+
+    # Paths provided by django.contrib.auth.urls
+
+    # accounts/login/ [name='login']
+    # accounts/logout/ [name='logout']
+    # accounts/password_change/ [name='password_change']
+    # accounts/password_change/done/ [name='password_change_done']
+    # accounts/password_reset/ [name='password_reset']
+    # accounts/password_reset/done/ [name='password_reset_done']
+    # accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
+    # accounts/reset/done/ [name='password_reset_complete']
 ]
 
