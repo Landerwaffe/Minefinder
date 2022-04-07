@@ -39,3 +39,8 @@ Django makes the HTML for the data entry by passing the models
 # 	class Meta:
 # 		model = User
 # 		fields = ['email','password']
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = '__all__'

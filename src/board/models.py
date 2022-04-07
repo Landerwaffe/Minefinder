@@ -31,7 +31,7 @@ class Account(AbstractBaseUser):
 
     email           = models.EmailField(verbose_name = "email", max_length = 60, unique = True)
     username        = models.CharField(max_length = 30, unique = True)
-    firstname        = models.CharField(max_length = 30, unique = True)
+    firstname       = models.CharField(max_length = 30, unique = True)
     lastname        = models.CharField(max_length = 30, unique = True)
     date_joined     = models.DateTimeField(verbose_name="date joined", auto_now=True)
     last_login      = models.DateTimeField(verbose_name="last login", auto_now=True)
@@ -55,3 +55,13 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+class Project(models.Model):
+
+    name = models.CharField(max_length = 50)
+    value = models.CharField(max_length = 10, default = '0')
+    description = models.CharField(max_length = 50)
+    image = models.ImageField(upload_to = 'static/images', default= 'static/images/E79.png')
+
+    def __str__(self):
+        return self.name
