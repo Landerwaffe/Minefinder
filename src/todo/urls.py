@@ -57,7 +57,8 @@ urlpatterns = [
     re_path('.*', http404),
     path('', include('gallery.urls')),
     path('projects/', projects_view, name='projects'),
-    path('upload/', upload_view, name='upload')
+    path('upload/', upload_view, name='upload'),
+    path('projectdetails/', details_view, name = 'projectdetails')
 
 
     # Paths provided by django.contrib.auth.urls
