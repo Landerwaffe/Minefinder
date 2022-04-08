@@ -61,7 +61,7 @@ class Project(models.Model):
     name = models.CharField(max_length = 50)
     value = models.CharField(max_length = 10, default = '0')
     description = models.CharField(max_length = 50)
-    image = models.ImageField(upload_to = 'static/images', default= 'static/images/E79.png')
+    image = models.ImageField(upload_to = 'static/images/', default= 'static/images/E79.png')
 
     def __str__(self):
         return self.name

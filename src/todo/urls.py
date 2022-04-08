@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.conf import settings
+from django.conf.urls.static import static 
 
 # from tasks.views import *
 from board.views import *
@@ -33,6 +35,7 @@ urlpatterns = [
     path('', include('gallery.urls')),
     path('projects/', projects_view, name='projects')
 
+
     # Paths provided by django.contrib.auth.urls
 
     # accounts/login/ [name='login']
@@ -44,4 +47,6 @@ urlpatterns = [
     # accounts/reset/<uidb64>/<token>/ [name='password_reset_confirm']
     # accounts/reset/done/ [name='password_reset_complete']
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
