@@ -113,7 +113,7 @@ def projects_view(request, *args, **kwargs):
 
     if request.method == 'POST':
         print(request.POST)
-        projectsform = ProjectForm(request.POST)
+        projectsform = ProjectForm(request.POST, request.FILES)
         print (projectsform)
         if projectsform.is_valid():
             print('FORM IS SAVED')
