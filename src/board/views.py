@@ -125,3 +125,27 @@ def projects_view(request, *args, **kwargs):
         "projectsform": projectsform,
         "projects": projects,
     })
+
+def upload_view(request, *args, **kwargs):
+    """
+    Upload View
+    -------------
+
+    Upload the client's project.
+    """
+    projects = Project.objects.all()
+
+    if request.method == 'POST':
+        print(request.POST)
+        projectsform = ProjectForm(request.POST, request.FILES)
+        print (projectsform)
+        if projectsform.is_valid():
+            print('FORM IS SAVED')
+            projectsform.save()
+    else:
+        projectsform = ProjectForm()
+
+    return render(request, "upload.html", {
+        "projectsform": projectsform,
+        "projects": projects,
+    })

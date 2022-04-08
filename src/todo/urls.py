@@ -33,7 +33,8 @@ urlpatterns = [
     path('', splash_view, name = 'home'),
     path('chat/', include('chat.urls')),
     path('', include('gallery.urls')),
-    path('projects/', projects_view, name='projects')
+    path('projects/', projects_view, name='projects'),
+    path('upload/', upload_view, name='upload')
 
 
     # Paths provided by django.contrib.auth.urls
