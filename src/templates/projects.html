@@ -10,7 +10,7 @@
 {% for project in projects %}
     <p style = "float: left; width: 15%;text-align: center;margin: 200px 320px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;">
         <img src="{{project.image.url}}" alt="meeting" style = "width:100%;"></img>
-        <br><b>{{project.name}}</b>
+        <br><a href = "/projectdetails/"><b>{{project.name}}</b></a>
         <br>{{project.description}}
         <br> {{project.value}}
     </p>
