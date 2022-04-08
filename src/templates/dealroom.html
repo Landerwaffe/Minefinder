@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<img src="{% static 'images/dealroombanner.jpg' %}" alt="background" style="background-color:white;object-fit:fill;" width=2560 height=810>
+
+<div style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px; font-family: 'Nunito';">
+    <p style = "float: left; width: 90%; height: 2560px;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50px; position:relative;">
+        <p style = "position: absolute; left: 10%; padding-top: 2%; font-size: 60px; color: #B85C38;"><b>Project Details</b></p>
+    </p>
+</div>
+
+{% endblock %}
