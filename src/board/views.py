@@ -173,3 +173,27 @@ def details_view(request, *args, **kwargs):
         "projectsform": projectsform,
         "projects": projects,
     })
+
+def dealroom_view(request, *args, **kwargs):
+    """
+    Deal Room View
+    -------------
+
+    Room to make deals with a reddit like public thread and a private chat.
+    """
+    projects = Project.objects.all()
+
+    if request.method == 'POST':
+        print(request.POST)
+        projectsform = ProjectForm(request.POST, request.FILES)
+        print (projectsform)
+        if projectsform.is_valid():
+            print('FORM IS SAVED')
+            projectsform.save()
+    else:
+        projectsform = ProjectForm()
+
+    return render(request, "dealroom.html", {
+        "projectsform": projectsform,
+        "projects": projects,
+    })
