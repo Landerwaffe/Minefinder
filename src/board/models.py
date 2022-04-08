@@ -65,3 +65,11 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+class Message(models.Model):
+
+    title = models.CharField(max_length = 50)
+    text = models.CharField(max_length = 1000, default = " ")
+
+    def __str__(self):
+        return self.title
