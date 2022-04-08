@@ -56,7 +56,8 @@ urlpatterns = [
             {'document_root': settings.MEDIA_ROOT}),
     re_path('.*', http404),
     path('', include('gallery.urls')),
-    path('projects/', projects_view, name='projects')
+    path('projects/', projects_view, name='projects'),
+    path('upload/', upload_view, name='upload')
 
 
     # Paths provided by django.contrib.auth.urls
