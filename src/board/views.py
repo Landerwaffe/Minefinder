@@ -181,19 +181,19 @@ def dealroom_view(request, *args, **kwargs):
 
     Room to make deals with a reddit like public thread and a private chat.
     """
-    projects = Project.objects.all()
+    messages = Message.objects.all()
 
     if request.method == 'POST':
         print(request.POST)
-        projectsform = ProjectForm(request.POST, request.FILES)
-        print (projectsform)
-        if projectsform.is_valid():
+        messageform = MessageForm(request.POST, request.FILES)
+        print (messageform)
+        if messageform.is_valid():
             print('FORM IS SAVED')
-            projectsform.save()
+            messageform.save()
     else:
-        projectsform = ProjectForm()
+        messageform = MessageForm()
 
     return render(request, "dealroom.html", {
-        "projectsform": projectsform,
-        "projects": projects,
+        "messageform": messageform,
+        "messages": messages,
     })
