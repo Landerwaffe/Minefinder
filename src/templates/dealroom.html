@@ -6,9 +6,23 @@
 
 <img src="{% static 'images/dealroombanner.jpg' %}" alt="background" style="background-color:white;object-fit:fill;" width=2560 height=810>
 
+{% for message in messages %}
+    <p style = "float: left; width: 90%; height: 20%;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    border-radius: 50px; position:relative; margin-top: 20px; ">
+        <img src="{% static 'images/profile.png' %}" alt="meeting" style = "width:3.5%; float:left;"></img> 
+        <b>{{message.title}}</b>
+        <br>{{message.text}}
+    </p>
+{% endfor %}
+
 <div style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px; font-family: 'Nunito';">
-    <p style = "float: left; width: 90%; height: 2560px;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50px; position:relative;">
-        <p style = "position: absolute; left: 10%; padding-top: 2%; font-size: 60px; color: #B85C38;"><b>Deal Room</b></p>
+    <p style = "float: left; width: 90%; height: 720px;text-align: center; margin-left: 5%; border-radius: 50px; position:relative;">
+        <!-- <p style = "position: absolute; left: 10%; padding-top: 2%; font-size: 60px; color: #B85C38;"><b>Deal Room</b></p> -->
+        <form action = "" method = "POST" enctype="multipart/form-data" style = "position: absolute; left: 10%; padding-top: 8%;">
+            {% csrf_token %}
+            {{ messageform.as_p }}
+            <input type="submit" value="Submit">
+        </form>
     </p>
 </div>
 
