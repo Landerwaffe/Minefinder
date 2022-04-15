@@ -49,3 +49,21 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         fields = '__all__'
+
+class PfpForm(forms.ModelForm):
+
+    class Meta:
+        model = Customer
+        fields = ['pfp']
+
+class ContactForm(forms.ModelForm):
+
+    class Meta:
+        model = Customer
+        fields = ['contact']
+
+class CompanyForm(forms.ModelForm):
+
+    class Meta:
+        model = Customer
+        fields = ['company']
