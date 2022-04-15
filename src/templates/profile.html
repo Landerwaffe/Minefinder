@@ -15,13 +15,13 @@
         <hr style = "height: 3px; width: 14%; background-color: #B4B4B4; position: absolute; top: 12%; left: 5.75%;">
         <p style = "top: 1.5%; left: 29%; position: absolute; padding: 0px;"><b>General Account Settings</b></p>
         <p style = "top: 4%; left: 32%; position: absolute; padding: 0px;">Name</p>
-        <p style = "top: 4%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 4%; left: 65%; position: absolute; padding: 0px;">{{request.user.first_name}} {{request.user.last_name}}</p>
         <p style = "top: 8%; left: 31.25%; position: absolute; padding: 0px;">Username</p>
         <p style = "top: 8%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
         <p style = "top: 12%; left: 32%; position: absolute; padding: 0px;">Email</p>
-        <p style = "top: 12%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 12%; left: 65%; position: absolute; padding: 0px;">{{request.user.email}}</p>
         <p style = "top: 16%; left: 31.6%; position: absolute; padding: 0px;">Contact</p>
-        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.Customer}}</p>
         <!-- <br><button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px;">Search Projects</button> -->
 
         <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>

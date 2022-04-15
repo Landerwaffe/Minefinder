@@ -87,10 +87,17 @@ def profile_view(request, *args, **kwargs):
 
     This is the profile page for the currently logged in user, I'm implementing it as it was mentioned in navbar.
     """
+    customers = Customer.objects.all()
+
     if request.GET.get('Exit') == 'Exit':
         logout(request)
 
-    return render(request, 'profile.html')
+    return render(request, 'profile.html', {
+        "pfpform": pfpform,
+        "contactform": contactform,
+        "companyform": companyform,
+        "customers": customers,
+    })
 
 def splash_view(request, *args, **kwargs):
     """
