@@ -16,7 +16,7 @@ class Gallery(View):
 
     def get_imgs(request):
         nid = request.GET.get('nid')
-        img_list = Img.objects.filter(id__gt=nid).values('id', 'src', 'title').order_by('title')
+        img_list = Img.objects.filter(id__gt=nid).values('id', 'src', 'title', 'create_time').order_by('title')
         img_list = list(img_list)
         ret = {
             'data': img_list,
