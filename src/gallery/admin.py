@@ -5,7 +5,7 @@ from .models import Img
 # Register your models here.
 @admin.register(Img)
 class ImgAdmin(admin.ModelAdmin):
-    list_display = ['id', 'src', 'title', 'admin_image']
+    list_display = ['id', 'src', 'title', 'create_time', 'admin_image']
 
     search_fields = ['title']
 

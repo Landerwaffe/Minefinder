@@ -36,7 +36,8 @@ urlpatterns = [
     path('projects/', projects_view, name='projects'),
     path('upload/', upload_view, name='upload'),
     path('projectdetails/', details_view, name = 'projectdetails'),
-    path('dealroom/', dealroom_view, name = 'dealroom')
+    path('dealroom/', dealroom_view, name = 'dealroom'),
+    path('', include('faq.urls')),
 
     # Paths provided by django.contrib.auth.urls
 
