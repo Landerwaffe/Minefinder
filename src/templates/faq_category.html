@@ -1,18 +1,24 @@
-{% extends 'base.html' %} {% load static %} {% block title %} FAQ
-{%endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+FAQ
+{%endblock %}
+{% block content %}
 <div class="banner">
   <img class="img-responsive bannerimg" src="/static/images/faq.png" alt="" />
   <div class="bannertitle">
     <div class="row">
       <div class="col-md-4 col-md-offset-2">
         <h1>Welcome {{ request.session.user_name }}</h1>
-        <p>How can we help you?</p>
+        <p>
+          How can we help you?
+        </p>
       </div>
       <div class="col-md-4">
         <form class="form-login" action="/faq/" method="post">
           {% csrf_token %}
           <div class="form-group">
-            <input type="text" name="keyword" class="form-control" />
+            <input type="text" name='keyword' class="form-control">
           </div>
           <div class="form-group">
             <button type="submit" class="btn">Search</button>
@@ -23,23 +29,76 @@
   </div>
 </div>
 <div class="clearfix"></div>
-<div style="background-color: rgb(224, 192, 151)">
-  <div class="row" style="text-align: center; padding-top: 200px">
-    <div class="col-md-10 col-md-offset-1">
+<div style="background-color: rgb(224,192,151);">
+  <div class="row" style="text-align: center;padding-top: 200px;">
+    <div class="col-md-4 col-md-offset-2">
       <div class="box">
-        <div style="margin-left: 20px">
+        <div style="margin-left: 20px;">
           <div class="clearfix"></div>
           <h2>About Projects</h2>
-          <div style="border-bottom: 2px solid rgb(184, 92, 56)"></div>
-          {% for item in articles %}
-          <a href="/faq/{{item.id}}">{{item.title}}</a>
-          {% endfor %}
+          <div style="border-bottom: 2px solid rgb(184,92,56);"></div>
+          <a href="/faq/1">Who are my Projects visible to?</a>
+          <a href="/faq/2">How do you promote my project?</a>
+          <a href="/faq/3">How do I upload a mining or exploration project?</a>
+          <a href="/faq/4">I m not good with computers, can I get MineFinder to upload my project for me?</a>
+          <a href="/faq/5">Do I have to pay MineFinder a commission if I sell my project?</a>
+          <a href="/faq/about/" class="more">See more</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box">
+        <div style="margin-left: 20px;">
+          <div class="clearfix"></div>
+          <h2>Safrty & Security</h2>
+          <div style="border-bottom: 2px solid rgb(184,92,56);"></div>
+          <a href="/faq/6">What security features do MineFinder Employ?</a>
+          <a href="/faq/7">How to protect your personal information?</a>
+          <a href="/faq/8">About public and protected Minefinder?</a>
+          <a href="/faq/9"> Additional information sharing with business partners</a>
+          <a href="/faq/10">Help with my compromised account</a>
+          <a href="/faq/safety/" class="more">See more</a>
         </div>
         <div class="clearfix"></div>
       </div>
     </div>
   </div>
-  <div style="height: 200px"></div>
+
+  <div class="row" style="text-align: center;padding-top: 80px;">
+    <div class="col-md-4 col-md-offset-2">
+      <div class="box">
+        <div style="margin-left: 20px;">
+          <div class="clearfix"></div>
+          <h2>About Projects</h2>
+          <div style="border-bottom: 2px solid rgb(184,92,56);"></div>
+          <a href="/faq/11">Can we have a Branded Landing Page?</a>
+          <a href="/faq/12"> If I send a project through MineFinder for my team to evaluate, can the public see the
+            project once its uploaded?</a>
+          <a href="/faq/13">Can my company get a custom project upload template?</a>
+          <a href="/faq/14"> Do we have to pay MineFinder a commission if we do deal on a project ?</a>
+          <a href="/faq/evaluation/" class="more">See more</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="box">
+        <div style="margin-left: 20px;">
+          <div class="clearfix"></div>
+          <h2>Safrty & Security</h2>
+          <div style="border-bottom: 2px solid rgb(184,92,56);"></div>
+          <a href="/faq/15">How we enforce our rules</a>
+          <a href="/faq/16">Notices on Minefinder and what they mean</a>
+          <a href="/faq/17">Our use of cookies and similar technologies</a>
+          <a href="/faq/18">Sensitive media policy</a>
+          <a href="/faq/rules/" class="more">See more</a>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div style="height:200px"></div>
 </div>
 <style>
   .banner {
@@ -84,6 +143,20 @@
     text-decoration: none;
     margin-top: 50px;
     color: rgb(184, 92, 56);
+  }
+
+  .box .more {
+    position: absolute;
+    display: block;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(184, 92, 56);
+    border-radius: 15px;
+    bottom: 50px;
+    right: 50px;
   }
 </style>
 {% endblock %}
