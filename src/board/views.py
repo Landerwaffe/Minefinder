@@ -92,6 +92,36 @@ def profile_view(request, *args, **kwargs):
     if request.GET.get('Exit') == 'Exit':
         logout(request)
 
+    if request.method == 'POST':
+        print(request.POST)
+        pfpform = PfpForm(request.POST, request.FILES)
+        print (pfpform)
+        if pfpform.is_valid():
+            print('FORM IS SAVED')
+            pfpform.save()
+    else:
+        pfpform = PfpForm()
+
+    if request.method == 'POST':
+        print(request.POST)
+        contactform = ContactForm(request.POST, request.FILES)
+        print (contactform)
+        if contactform.is_valid():
+            print('FORM IS SAVED')
+            contactform.save()
+    else:
+        contactform = ContactForm()
+
+    if request.method == 'POST':
+        print(request.POST)
+        companyform = CompanyForm(request.POST, request.FILES)
+        print (companyform)
+        if companyform.is_valid():
+            print('FORM IS SAVED')
+            companyform.save()
+    else:
+        companyform = CompanyForm()
+
     return render(request, 'profile.html', {
         "pfpform": pfpform,
         "contactform": contactform,
