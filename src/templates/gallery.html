@@ -5,22 +5,50 @@
     <meta charset="UTF-8">
     <style>
         .w{
-            width: 2000px;
+            width: 2100px;
             margin: 0 auto;
         }
         .item{
             width: 25%;
             float: left;
-            padding-left: 5px;
+            padding-left: 10px;
         }
         .item img{
             width: 100%;
+            box-shadow: 3px 3px 3px #888888;
+        }
+        .title{
+            position: relative;
+            font-style: italic;
+            bottom: 35px;
+            color: white;
+            font-size: 22px;
+            height: 0;
+            left: 3px;
+        }
+        .time{
+            position: relative;
+            font-style: normal;
+            bottom: 35px;
+            color: white;
+            font-size: 22px;
+            height: 0;
+            left: 20px;
+            text-align: right;
+            padding-bottom: 5px;
+        }
+        p#back-to-top{
+            position:fixed;
+            display:none;
+            bottom:100px;
+            right:80px;
         }
     </style>
 </head>
 
 <body>
     <div>Images flood test</div>
+    <p id="back-to-top"><a href="#top">Back to top</a></p>
     <div class="w" id="container">
             <div class="item">
 
@@ -41,6 +69,26 @@
             var obj=new ScrollImg();
             obj.initImg();
             obj.scrollEvent();
+
+             $(window).scroll(function(){
+                if ($(window).scrollTop()>100){
+                    $("#back-to-top").fadeIn(1500);
+                }
+                else
+                {
+                    $("#back-to-top").fadeOut(1500);
+                }
+            });
+
+            //当点击跳转链接后，回到页面顶部位置
+            $("#back-to-top").click(function(){
+                if ($('html').scrollTop()) {
+                    $('html').animate({ scrollTop: 0 }, 100);//动画效果
+                    return false;
+                }
+                $('body').animate({ scrollTop: 0 }, 100);
+                return false;
+            });
         })
 
         function ScrollImg(){
@@ -60,13 +108,23 @@
                             var eqv=(index+that.lastpostion) % 4;
                             var tag =document.createElement('img');
                             var div = document.createElement('div');
+                            var a = document.createElement('a');
+                            var date = new Date(v.create_time);
                             //image
                             tag.src='/'+v.src;
-                            var p1 = document.createElement('p');
+                            a.href = '/gallery';
+                            a.style.textDecoration = 'none';
+                            var p1 = document.createElement('div');
+                            var p2 = document.createElement('div');
+                            p1.className = 'title';
+                            p2.className = 'time';
                             //title
                             p1.innerText = v.title;
-                            //div.appendChild(p1);
-                            $('#container').children().eq(eqv).append(tag,div);
+                            // p2.innerText = date.getFullMonthName();
+
+                            div.append(tag, p1, p2);
+                            a.appendChild(div);
+                            $('#container').children().eq(eqv).append(a);
                             //While to the last image, copy the image id to NID
                             if(index+1==img_list.length){
                                 //that.nid=v.id;
