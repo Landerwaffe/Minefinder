@@ -16,12 +16,17 @@
         <p style = "top: 1.5%; left: 29%; position: absolute; padding: 0px;"><b>General Account Settings</b></p>
         <p style = "top: 4%; left: 32%; position: absolute; padding: 0px;">Name</p>
         <p style = "top: 4%; left: 65%; position: absolute; padding: 0px;">{{request.user.first_name}} {{request.user.last_name}}</p>
+        <a id = "myLink" style = "top: 4%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 8%; left: 31.25%; position: absolute; padding: 0px;">Username</p>
         <p style = "top: 8%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <a id = "myLink2" style = "top: 8%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 12%; left: 32%; position: absolute; padding: 0px;">Email</p>
         <p style = "top: 12%; left: 65%; position: absolute; padding: 0px;">{{request.user.email}}</p>
+        <a id = "myLink3" style = "top: 12%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 16%; left: 31.6%; position: absolute; padding: 0px;">Contact</p>
-        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.Customer}}</p>
+        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.Customer.contact}}</p>
+        <a id = "myLink4" style = "top: 16%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
+        <p style = "top: 20%; left: 82.2%; position: absolute; padding: 0px; color:#B85C38;">Upload new profile image</p>
         <!-- <br><button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px;">Search Projects</button> -->
 
         <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>
@@ -43,6 +48,66 @@
             <button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:5px 90px; position: absolute; top: 90%; left: 7.15%;" name = "Exit" value = "Exit">Sign Out</button>
         </form>
     </p>
+</div>
+
+<!-- Trigger/Open The Modal -->
+<button hidden id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        {{ nameform.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
+</div>
+
+<div id="myModal2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id = "close2" class="close">&times;</span>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ usernameform.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  
+</div>
+
+<div id="myModal3" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id = "close3" class="close">&times;</span>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ emailform.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  
+</div>
+
+<div id="myModal4" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id = "close4" class="close">&times;</span>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ contactform.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  
 </div>
 {% endblock %}
 

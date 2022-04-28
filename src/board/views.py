@@ -88,13 +88,44 @@ def profile_view(request, *args, **kwargs):
     This is the profile page for the currently logged in user, I'm implementing it as it was mentioned in navbar.
     """
     customers = Customer.objects.all()
+    a = User.objects.get(pk=request.user.id)
 
     if request.GET.get('Exit') == 'Exit':
         logout(request)
 
     if request.method == 'POST':
         print(request.POST)
-        pfpform = PfpForm(request.POST, request.FILES)
+        nameform = NameForm(request.POST, request.FILES, instance = a)
+        print (nameform)
+        if nameform.is_valid():
+            print('FORM IS SAVED')
+            nameform.save()
+    else:
+        nameform = NameForm()
+
+    if request.method == 'POST':
+        print(request.POST)
+        usernameform = UsernameForm(request.POST, request.FILES, instance = a)
+        print (usernameform)
+        if usernameform.is_valid():
+            print('FORM IS SAVED')
+            usernameform.save()
+    else:
+        usernameform = UsernameForm()
+
+    if request.method == 'POST':
+        print(request.POST)
+        emailform = EmailForm(request.POST, request.FILES, instance = a)
+        print (emailform)
+        if emailform.is_valid():
+            print('FORM IS SAVED')
+            emailform.save()
+    else:
+        emailform = EmailForm()
+    
+    if request.method == 'POST':
+        print(request.POST)
+        pfpform = PfpForm(request.POST, request.FILES, instance = a)
         print (pfpform)
         if pfpform.is_valid():
             print('FORM IS SAVED')
@@ -104,7 +135,7 @@ def profile_view(request, *args, **kwargs):
 
     if request.method == 'POST':
         print(request.POST)
-        contactform = ContactForm(request.POST, request.FILES)
+        contactform = ContactForm(request.POST, request.FILES, instance = a)
         print (contactform)
         if contactform.is_valid():
             print('FORM IS SAVED')
@@ -114,7 +145,7 @@ def profile_view(request, *args, **kwargs):
 
     if request.method == 'POST':
         print(request.POST)
-        companyform = CompanyForm(request.POST, request.FILES)
+        companyform = CompanyForm(request.POST, request.FILES, instance = a)
         print (companyform)
         if companyform.is_valid():
             print('FORM IS SAVED')
@@ -123,7 +154,10 @@ def profile_view(request, *args, **kwargs):
         companyform = CompanyForm()
 
     return render(request, 'profile.html', {
+        "nameform": nameform,
+        "usernameform": usernameform,
         "pfpform": pfpform,
+        "emailform": emailform,
         "contactform": contactform,
         "companyform": companyform,
         "customers": customers,
