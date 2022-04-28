@@ -14,7 +14,7 @@ class Customer(models.Model):
     pfp = models.ImageField(upload_to = 'static/images/pfp', default= 'static/images/E79.png')
 
     def __str__(self):
-        return self.name
+        return self.contact
 
 class Project(models.Model):
 

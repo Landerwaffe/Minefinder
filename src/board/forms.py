@@ -50,6 +50,19 @@ class MessageForm(forms.ModelForm):
         model = Message
         fields = '__all__'
 
+class NameForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name','last_name']
+
+class UsernameForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
+class EmailForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
 class PfpForm(forms.ModelForm):
 
     class Meta:
