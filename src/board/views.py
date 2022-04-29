@@ -6,7 +6,8 @@ from django.http import HttpResponseRedirect
 
 from django.contrib.auth.models import *
 from django.contrib.auth.forms import *
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 from .models import *
 from .forms import *
 
@@ -80,6 +81,31 @@ def registration_view(request, *args, **kwargs):
             "formlogin" :  formlogin
         })
 
+def registerPage(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = createUserForm(request.POST)
+        customerform = CustomerForm(request.POST)
+
+        if form.is_valid() and customerform.is_valid():
+            user = form.save()
+
+            #we don't save the profile_form here because we have to first get the value of profile_form, assign the user to the OneToOneField created in models before we now save the profile_form. 
+
+            customer = customerform.save(commit=False)
+            customer.user = user
+
+            customer.save()
+
+            messages.success(request,  'Your account has been successfully created')
+
+            return redirect('/login/')
+    else:
+        form = createUserForm()
+        customerform = CustomerForm()
+
+    context = {'form': form, 'customerform': customerform, 'title': 'Hoopla'}
+    return render(request, 'register.html', context)
+
 def profile_view(request, *args, **kwargs):
     """
     Profile View
@@ -92,6 +118,16 @@ def profile_view(request, *args, **kwargs):
 
     if request.GET.get('Exit') == 'Exit':
         logout(request)
+
+    if request.method == 'POST':
+        print(request.POST)
+        customerform = CustomerForm(request.POST, request.FILES, instance = a)
+        print (customerform)
+        if customerform.is_valid():
+            print('FORM IS SAVED')
+            customerform.save()
+    else:
+        customerform = CustomerForm()
 
     if request.method == 'POST':
         print(request.POST)
@@ -154,6 +190,7 @@ def profile_view(request, *args, **kwargs):
         companyform = CompanyForm()
 
     return render(request, 'profile.html', {
+        "customerform": customerform,
         "nameform": nameform,
         "usernameform": usernameform,
         "pfpform": pfpform,
