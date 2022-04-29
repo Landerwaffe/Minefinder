@@ -1,7 +1,12 @@
 from django import forms
 from django.forms import ModelForm
 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
 from .models import *
+from .models import Customer
+from django.utils.translation import gettext_lazy as _
 
 """
 Forms.py description
@@ -9,42 +14,30 @@ Forms.py description
 
 Django makes the HTML for the data entry by passing the models
 """
+class createUserForm(UserCreationForm):
+    class meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
 
-# class BoardForm(forms.ModelForm):
-# 	class Meta:
-# 		model = Board  
-# 		fields = '__all__'
-
-# class ListForm(forms.ModelForm):
-# 	class Meta:
-# 		model = List 
-# 		fields = ['board','listtitle']
-
-# class CardForm(forms.ModelForm):
-# 	class Meta:
-# 		model = Card  
-# 		fields = ['board','list','author','cardtitle','description']
-
-# class TaskForm(forms.ModelForm):
-# 	class Meta:
-# 		model = Task  
-# 		fields = '__all__'
-
-# class RequestForm(forms.ModelForm):
-# 	class Meta:
-# 		model = Request 
-# 		fields = '__all__'
-
-# class LoginForm(forms.ModelForm):
-# 	class Meta:
-# 		model = User
-# 		fields = ['email','password']
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = ['contact', 'company', 'pfp']
+        labels = {
+                "contact": _("Phone Number"),
+                "company": _("Work Location"),
+                "pfp": _("Image"),
+                }
 
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = '__all__'
 
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = '__all__'
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
