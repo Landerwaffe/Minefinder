@@ -2,8 +2,8 @@ import json
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import datetime
-
-
+ 
+ 
 class ChatConsumer(WebsocketConsumer):
     # websocket connect
     def connect(self):
