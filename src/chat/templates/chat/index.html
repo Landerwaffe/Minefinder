@@ -1,31 +1,26 @@
-{% extends "home/base.html" %}
-
-<!-- Specific CSS goes HERE -->
-{% block stylesheets %}
-{% endblock stylesheets %}
-{% block content %}
-<div style="height:800px">
-    <h4>
-        enter your room:
-    </h4>
-    <div class="form-group">
-        <input style="height:80px" id="room-name-input" class="form-control" type="text" size="100" />
-        <input style="height:80px;margin-top:20px;" id="room-name-submit" class="form-control" type="button"
-            value="Enter" />
-    </div>
-</div>
-<script>
-    document.querySelector("#room-name-input").focus();
-    document.querySelector("#room-name-input").onkeyup = function (e) {
-        if (e.keyCode === 13) {
-            // enter, return
-            document.querySelector("#room-name-submit").click();
-        }
-    };
-
-    document.querySelector("#room-name-submit").onclick = function (e) {
-        var roomName = document.querySelector("#room-name-input").value;
-        window.location.pathname = "/chat/" + roomName + "/";
-    };
-</script>
-{% endblock content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+</head>
+<body>
+    enter your room:
+    <input id="room-name-input" type="text" size="100">
+    <input id="room-name-submit" type="button" value="Enter">
+ 
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+ 
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+</body>
+ </html>
