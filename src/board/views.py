@@ -113,7 +113,7 @@ def profile_view(request, *args, **kwargs):
 
     This is the profile page for the currently logged in user, I'm implementing it as it was mentioned in navbar.
     """
-    customers = Customer.objects.get(pk=7)
+    customers = Customer.objects.get(user_id = request.user.id)
     a = User.objects.get(pk=request.user.id)
 
     if request.GET.get('Exit') == 'Exit':
@@ -135,7 +135,7 @@ def profile_view(request, *args, **kwargs):
         print (nameform)
         if nameform.is_valid():
             print('FORM IS SAVED')
-            nameform.update()
+            nameform.save()
     else:
         nameform = NameForm()
 
@@ -161,17 +161,19 @@ def profile_view(request, *args, **kwargs):
     
     if request.method == 'POST':
         print(request.POST)
-        pfpform = PfpForm(request.POST, request.FILES, instance = a)
+        pfpform = PfpForm(request.POST, request.FILES, instance = customers)
         print (pfpform)
         if pfpform.is_valid():
             print('FORM IS SAVED')
+            print('!!!!!!!!!!!!!!!!!')
+            print(request.FILES)
             pfpform.save()
     else:
         pfpform = PfpForm()
 
     if request.method == 'POST':
         print(request.POST)
-        contactform = ContactForm(request.POST, request.FILES, instance = a)
+        contactform = ContactForm(request.POST, request.FILES, instance = customers)
         print (contactform)
         if contactform.is_valid():
             print('FORM IS SAVED')
@@ -181,7 +183,7 @@ def profile_view(request, *args, **kwargs):
 
     if request.method == 'POST':
         print(request.POST)
-        companyform = CompanyForm(request.POST, request.FILES, instance = a)
+        companyform = CompanyForm(request.POST, request.FILES, instance = customers)
         print (companyform)
         if companyform.is_valid():
             print('FORM IS SAVED')
@@ -198,6 +200,7 @@ def profile_view(request, *args, **kwargs):
         "contactform": contactform,
         "companyform": companyform,
         "customers": customers,
+        "users": a,
     })
 
 def splash_view(request, *args, **kwargs):
@@ -225,6 +228,8 @@ def projects_view(request, *args, **kwargs):
         print (projectsform)
         if projectsform.is_valid():
             print('FORM IS SAVED')
+            print('!!!!!!!!!!!!!!!!!')
+            print(request.FILES)
             projectsform.save()
     else:
         projectsform = ProjectForm()
