@@ -24,16 +24,21 @@
         <p style = "top: 12%; left: 65%; position: absolute; padding: 0px;">{{request.user.email}}</p>
         <a id = "myLink3" style = "top: 12%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 16%; left: 31.6%; position: absolute; padding: 0px;">Contact</p>
-        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.Customer.contact}}</p>
+        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{customers.contact}}</p>
         <a id = "myLink4" style = "top: 16%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 20%; left: 82.2%; position: absolute; padding: 0px; color:#B85C38;">Upload new profile image</p>
+        <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ pfpform.as_p }}
+          <input type="submit" value="Submit">
+        </form>
         <!-- <br><button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px;">Search Projects</button> -->
 
         <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>
         <p style = "top: 35%; left: 31.25%; position: absolute; padding: 0px;">Authenticated</p>
         <p style = "top: 35%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
         <p style = "top: 37%; left: 31.25%; position: absolute; padding: 0px;">Company Name</p>
-        <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{customers.company}}</p>
 
         <p style = "top: 66%; left: 29%; position: absolute; padding: 0px;"><b>Security</b></p>
         <p style = "top: 68%; left: 31.25%; position: absolute; padding: 0px;">User Tiering</p>

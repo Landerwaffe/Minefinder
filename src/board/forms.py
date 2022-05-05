@@ -34,10 +34,6 @@ class ProjectForm(forms.ModelForm):
         model = Project
         fields = '__all__'
 
-class CustomerForm(forms.ModelForm):
-    class Meta:
-        model = Customer
-        fields = '__all__'
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
