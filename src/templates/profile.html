@@ -27,7 +27,7 @@
         <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{customers.contact}}</p>
         <a id = "myLink4" style = "top: 16%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 20%; left: 82.2%; position: absolute; padding: 0px; color:#B85C38;">Upload new profile image</p>
-        <form action = "" method = "POST">
+        <form action = "" method = "POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ pfpform.as_p }}
           <input type="submit" value="Submit">
