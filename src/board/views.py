@@ -58,33 +58,33 @@ def logout_view(request):
     auth.logout(request)
     # Redirect to some logout page I guess
 
-def registration_view(request, *args, **kwargs):
-    """
-    Registration View
-    -----------------
+# def registration_view(request, *args, **kwargs):
+#     """
+#     Registration View
+#     -----------------
 
-    Users can register accounts on this page, I think it'd be wise to keep superuser, admins behind
-    needing the Django Admin dashboard.
-    """
-    if request.method == 'POST':
-        print(request.POST)
-        formlogin = UserCreationForm(request.POST)
-        print (formlogin)
-        if formlogin.is_valid():
-            print('FORM IS SAVED')
-            formlogin.save()
-    else:
-        formlogin = UserCreationForm()
+#     Users can register accounts on this page, I think it'd be wise to keep superuser, admins behind
+#     needing the Django Admin dashboard.
+#     """
+#     if request.method == 'POST':
+#         print(request.POST)
+#         formlogin = UserCreationForm(request.POST)
+#         print (formlogin)
+#         if formlogin.is_valid():
+#             print('FORM IS SAVED')
+#             formlogin.save()
+#     else:
+#         formlogin = UserCreationForm()
 
-    return render(request, "register.html", {
-            "title" : 'Register',
-            "formlogin" :  formlogin
-        })
+#     return render(request, "register.html", {
+#             "title" : 'Register',
+#             "formlogin" :  formlogin
+#         })
 
 def registerPage(request, *args, **kwargs):
     if request.method == 'POST':
-        form = createUserForm(request.POST)
-        customerform = CustomerForm(request.POST)
+        form = createUserForm(request.POST, request.FILES)
+        customerform = CustomerForm(request.POST, request.FILES)
 
         if form.is_valid() and customerform.is_valid():
             user = form.save()
@@ -103,7 +103,7 @@ def registerPage(request, *args, **kwargs):
         form = createUserForm()
         customerform = CustomerForm()
 
-    context = {'form': form, 'customerform': customerform, 'title': 'Hoopla'}
+    context = {'form': form, 'customerform': customerform, 'title': 'Register'}
     return render(request, 'register.html', context)
 
 def profile_view(request, *args, **kwargs):
@@ -113,7 +113,7 @@ def profile_view(request, *args, **kwargs):
 
     This is the profile page for the currently logged in user, I'm implementing it as it was mentioned in navbar.
     """
-    customers = Customer.objects.all()
+    customers = Customer.objects.get(pk=7)
     a = User.objects.get(pk=request.user.id)
 
     if request.GET.get('Exit') == 'Exit':
@@ -135,7 +135,7 @@ def profile_view(request, *args, **kwargs):
         print (nameform)
         if nameform.is_valid():
             print('FORM IS SAVED')
-            nameform.save()
+            nameform.update()
     else:
         nameform = NameForm()
 
