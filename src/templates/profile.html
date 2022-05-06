@@ -9,7 +9,7 @@
 
 <div class = "w3-container w3-white" style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px;">
     <p style = "float: left; width: 90%; height: 2560px;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50px; position:relative;">
-        <img src="{% static 'images/profile.png' %}" alt="meeting" style = "width:10%; left: 3%; position: absolute;"></img>
+        <img src="{{customers.pfp.url}}" alt="meeting" style = "width:10%; left: 3%; position: absolute;"></img>
         <p style = "top: 11.5%; left: 11.2%; position: absolute; padding: 0px;">{{request.user}}</p>
         <hr style = "height: 96%; width: 3px; background-color: #B4B4B4; position: absolute; left: 20%;">
         <hr style = "height: 3px; width: 14%; background-color: #B4B4B4; position: absolute; top: 12%; left: 5.75%;">
@@ -39,9 +39,11 @@
         <p style = "top: 35%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
         <p style = "top: 37%; left: 31.25%; position: absolute; padding: 0px;">Company Name</p>
         <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{customers.company}}</p>
+        <a id = "myLink5" style = "top: 37%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
 
         <p style = "top: 66%; left: 29%; position: absolute; padding: 0px;"><b>Security</b></p>
         <p style = "top: 68%; left: 31.25%; position: absolute; padding: 0px;">User Tiering</p>
+        <p style = "top: 68%; left: 65%; position: absolute; padding: 0px;">Trusted</p>
         <p style = "top: 70%; left: 31.25%; position: absolute; padding: 0px;">Password</p>
 
         <button class="button" style = "color:black;background-color:#DFDFDF;font-size:28px;padding:5px 110px; position: absolute; top: 13.5%; left: 6.3%;" name = "Account" value = "Account">Account</button>
@@ -113,6 +115,20 @@
       </form>
     </div>
   
+</div>
+
+<div id="myModal5" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id = "close5" class="close">&times;</span>
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        {{ companyform.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
 </div>
 {% endblock %}
 
