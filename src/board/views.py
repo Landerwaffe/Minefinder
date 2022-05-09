@@ -295,6 +295,10 @@ def dealroom_view(request, *args, **kwargs):
     Room to make deals with a reddit like public thread and a private chat.
     """
     messages = Message.objects.all()
+    customers = Customer.objects.all()
+    customer = Customer.objects.get(message_author = customers.id)
+    form = MessageForm(initial={'author': request.user.id})
+    form['author'].value()
 
     if request.method == 'POST':
         print(request.POST)
@@ -309,4 +313,6 @@ def dealroom_view(request, *args, **kwargs):
     return render(request, "dealroom.html", {
         "messageform": messageform,
         "messages": messages,
+        "customer": customer,
+        "customers": customers,
     })
