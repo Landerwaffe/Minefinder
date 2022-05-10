@@ -296,7 +296,7 @@ def dealroom_view(request, *args, **kwargs):
     """
     messages = Message.objects.all()
     customers = Customer.objects.all()
-    customer = Customer.objects.get(message_author = customers.id)
+    customer = Customer.objects.get(pk = 2)
     form = MessageForm(initial={'author': request.user.id})
     form['author'].value()
 
