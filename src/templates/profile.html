@@ -9,29 +9,41 @@
 
 <div class = "w3-container w3-white" style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px;">
     <p style = "float: left; width: 90%; height: 2560px;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50px; position:relative;">
-        <img src="{% static 'images/profile.png' %}" alt="meeting" style = "width:10%; left: 3%; position: absolute;"></img>
+        <img src="{{customers.pfp.url}}" alt="meeting" style = "width:10%; left: 3%; position: absolute;"></img>
         <p style = "top: 11.5%; left: 11.2%; position: absolute; padding: 0px;">{{request.user}}</p>
         <hr style = "height: 96%; width: 3px; background-color: #B4B4B4; position: absolute; left: 20%;">
         <hr style = "height: 3px; width: 14%; background-color: #B4B4B4; position: absolute; top: 12%; left: 5.75%;">
         <p style = "top: 1.5%; left: 29%; position: absolute; padding: 0px;"><b>General Account Settings</b></p>
         <p style = "top: 4%; left: 32%; position: absolute; padding: 0px;">Name</p>
         <p style = "top: 4%; left: 65%; position: absolute; padding: 0px;">{{request.user.first_name}} {{request.user.last_name}}</p>
+        <a id = "myLink" style = "top: 4%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 8%; left: 31.25%; position: absolute; padding: 0px;">Username</p>
         <p style = "top: 8%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <a id = "myLink2" style = "top: 8%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 12%; left: 32%; position: absolute; padding: 0px;">Email</p>
         <p style = "top: 12%; left: 65%; position: absolute; padding: 0px;">{{request.user.email}}</p>
+        <a id = "myLink3" style = "top: 12%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
         <p style = "top: 16%; left: 31.6%; position: absolute; padding: 0px;">Contact</p>
-        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{request.Customer}}</p>
+        <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{customers.contact}}</p>
+        <a id = "myLink4" style = "top: 16%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
+        <p style = "top: 20%; left: 82.2%; position: absolute; padding: 0px; color:#B85C38;">Upload new profile image</p>
+        <form action = "" method = "POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ pfpform.as_p }}
+          <input type="submit" value="Submit">
+        </form>
         <!-- <br><button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px;">Search Projects</button> -->
 
         <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>
         <p style = "top: 35%; left: 31.25%; position: absolute; padding: 0px;">Authenticated</p>
         <p style = "top: 35%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
         <p style = "top: 37%; left: 31.25%; position: absolute; padding: 0px;">Company Name</p>
-        <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{customers.company}}</p>
+        <a id = "myLink5" style = "top: 37%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
 
         <p style = "top: 66%; left: 29%; position: absolute; padding: 0px;"><b>Security</b></p>
         <p style = "top: 68%; left: 31.25%; position: absolute; padding: 0px;">User Tiering</p>
+        <p style = "top: 68%; left: 65%; position: absolute; padding: 0px;">Trusted</p>
         <p style = "top: 70%; left: 31.25%; position: absolute; padding: 0px;">Password</p>
 
         <button class="button" style = "color:black;background-color:#DFDFDF;font-size:28px;padding:5px 110px; position: absolute; top: 13.5%; left: 6.3%;" name = "Account" value = "Account">Account</button>
@@ -43,6 +55,80 @@
             <button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:5px 90px; position: absolute; top: 90%; left: 7.15%;" name = "Exit" value = "Exit">Sign Out</button>
         </form>
     </p>
+</div>
+
+<!-- Trigger/Open The Modal -->
+<button hidden id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        {{ nameform.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
+</div>
+
+<div id="myModal2" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id = "close2" class="close">&times;</span>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ usernameform.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  
+</div>
+
+<div id="myModal3" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id = "close3" class="close">&times;</span>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ emailform.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  
+</div>
+
+<div id="myModal4" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id = "close4" class="close">&times;</span>
+      <form action = "" method = "POST">
+          {% csrf_token %}
+          {{ contactform.as_p }}
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+  
+</div>
+
+<div id="myModal5" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id = "close5" class="close">&times;</span>
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        {{ companyform.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
 </div>
 {% endblock %}
 

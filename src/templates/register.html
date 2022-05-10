@@ -11,7 +11,8 @@
         <div style = "font-size: 24px;">
             <form action = "" method = "POST">
                 {% csrf_token %}
-                {{ formlogin.as_p }}
+                {{ form.as_p }}
+                {{ customerform.as_p }}
                 <input type="submit" value="Submit">
             </form>
         </div>

@@ -6,3 +6,4 @@ from .models import *
 
 admin.site.register(Project)
 admin.site.register(Message)
+admin.site.register(Customer)

@@ -14,7 +14,7 @@ class Customer(models.Model):
     pfp = models.ImageField(upload_to = 'static/images/pfp', default= 'static/images/E79.png')
 
     def __str__(self):
-        return self.name
+        return self.contact
 
 class Project(models.Model):
 
@@ -30,6 +30,8 @@ class Message(models.Model):
 
     title = models.CharField(max_length = 50)
     text = models.CharField(max_length = 1000, default = " ")
+    author = models.CharField(max_length = 50, default = " ")
 
     def __str__(self):
         return self.title
+
