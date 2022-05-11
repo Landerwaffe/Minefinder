@@ -25,16 +25,14 @@
 </div>
 <div class="clearfix"></div>
 <div style="background-color: rgb(224, 192, 151)">
-  <div class="row" style="text-align: center; padding-top: 50px; padding-left: 600px; display: flex; justify-content: space-between">
-    <div class="col-md-10 col-md-offset-1" style="width: 1400px">
+  <div class="row" style="text-align: center; padding-top: 200px">
+    <div class="col-md-10 col-md-offset-1">
       <div class="box">
-        <div style="margin-left: 20px;">
+        <div style="margin-left: 20px">
           <div class="clearfix"></div>
           <h2>{{article.title}}</h2>
           <div style="border-bottom: 2px solid rgb(184, 92, 56)"></div>
-          <div style="text-align: left">
-            {{article.brief | safe}}
-          </div>
+          {{article.brief | safe}}
         </div>
         <div class="clearfix"></div>
       </div>
