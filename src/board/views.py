@@ -316,3 +316,19 @@ def dealroom_view(request, *args, **kwargs):
         "customer": customer,
         "user": user,
     })
+
+def formtest_view(request, *args, **kwargs):
+    
+    if request.method == 'POST':
+        print(request.POST)
+        messageform = MessageForm(request.POST, request.FILES)
+        print(messageform)
+        if messageform.is_valid():
+            print('FORM IS SAVED')
+            messageform.save()
+    else:
+        messageform = MessageForm()
+        messageform.fields["author"].initial = {{request.user.id}}
+
+    context = {"messageform": messageform}
+    return render(request, "formtest.html", context)

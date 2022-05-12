@@ -39,6 +39,7 @@ urlpatterns = [
     path('dealroom/', dealroom_view, name = 'dealroom'),
     path('', include('faq.urls')),
 
+    path('formtest/', formtest_view, name='formtest')
     # Paths provided by django.contrib.auth.urls
 
     # accounts/login/ [name='login']
