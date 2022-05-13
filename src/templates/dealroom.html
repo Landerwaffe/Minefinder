@@ -7,6 +7,7 @@
 <img src="{% static 'images/dealroombanner.jpg' %}" alt="background" style="background-color:white;object-fit:fill;" width=2560 height=810>
 
 {% for message in messages %}
+    <!-- {{customer == message.author}} -->
     <p style = "float: left; width: 90%; height: 20%;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
     border-radius: 50px; position:relative; margin-top: 20px; ">
         <img src="{{customer.pfp.url}}" alt="meeting" style = "width:3.5%; float:left;"></img> 
@@ -21,7 +22,17 @@
         <!-- <p style = "position: absolute; left: 10%; padding-top: 2%; font-size: 60px; color: #B85C38;"><b>Deal Room</b></p> -->
         <form action = "" method = "POST" enctype="multipart/form-data" style = "position: absolute; left: 10%; padding-top: 8%;">
             {% csrf_token %}
-            {{ messageform.as_p }}
+            {{messageform.title.label}}
+            {{messageform.title}}
+            <br>
+            {{messageform.text.label}}
+            {{messageform.text}}
+            <br>
+            <div hidden>
+            {{messageform.author.label}}
+            {{messageform.author}}
+            </div>
+            <br>
             <input type="submit" value="Submit">
         </form>
     </p>

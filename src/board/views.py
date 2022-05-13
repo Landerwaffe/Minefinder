@@ -297,8 +297,6 @@ def dealroom_view(request, *args, **kwargs):
     messages = Message.objects.all()
     customer = Customer.objects.get(user_id = request.user.id)
     user = User.objects.get(pk = request.user.id)
-    form = MessageForm(initial={'author': request.user.id})
-    form['author'].value()
 
     if request.method == 'POST':
         print(request.POST)
@@ -308,14 +306,10 @@ def dealroom_view(request, *args, **kwargs):
             print('FORM IS SAVED')
             messageform.save()
     else:
-        messageform = MessageForm()
+        messageform = MessageForm(initial={'author':request.user.customer.id})
 
-    return render(request, "dealroom.html", {
-        "messageform": messageform,
-        "messages": messages,
-        "customer": customer,
-        "user": user,
-    })
+    context =  {"messageform": messageform, "messages": messages, "customer": customer, "user": user}
+    return render(request, "dealroom.html", context)
 
 def formtest_view(request, *args, **kwargs):
     
@@ -327,8 +321,7 @@ def formtest_view(request, *args, **kwargs):
             print('FORM IS SAVED')
             messageform.save()
     else:
-        messageform = MessageForm()
-        messageform.fields["author"].initial = {{request.user.id}}
+        messageform = MessageForm(initial={'author':request.user.customer.id})
 
     context = {"messageform": messageform}
     return render(request, "formtest.html", context)
