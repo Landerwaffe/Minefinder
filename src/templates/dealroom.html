@@ -7,13 +7,21 @@
 <img src="{% static 'images/dealroombanner.jpg' %}" alt="background" style="background-color:white;object-fit:fill;" width=2560 height=810>
 
 {% for message in messages %}
-    <p style = "float: left; width: 90%; height: 20%;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
-    border-radius: 50px; position:relative; margin-top: 20px; ">
-        <img src="{{customer.pfp.url}}" alt="meeting" style = "width:3.5%; float:left;"></img> 
-        <b>{{message.title}}</b>
-        <br>{{message.text}}
-        <br>{{user.username}}
-    </p>
+    {% for a in customers %}
+        {% if a.id == message.author %}
+        <p style = "float: left; width: 90%; height: 20%;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+        border-radius: 50px; position:relative; margin-top: 20px; ">
+            <img src="{{a.pfp.url}}" alt="meeting" style = "width:3.5%; float:left;"></img> 
+            <b>{{message.title}}</b>
+            <br>{{message.text}}
+            {% for b in users %}
+                {% if a.user_id == b.id %}
+                    <br>{{b.username}}
+                {% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
+    {% endfor %}
 {% endfor %}
 
 <div style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px; font-family: 'Nunito';">

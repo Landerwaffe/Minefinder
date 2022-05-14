@@ -296,9 +296,9 @@ def dealroom_view(request, *args, **kwargs):
     """
     messages = Message.objects.all()
     customer = Customer.objects.get(user_id = request.user.id)
-    allcustomers = Customer.objects.all()
+    customers = Customer.objects.all()
     user = User.objects.get(pk = request.user.id)
-    allusers = User.objects.all()
+    users = User.objects.all()
 
     if request.method == 'POST':
         print(request.POST)
@@ -310,7 +310,7 @@ def dealroom_view(request, *args, **kwargs):
     else:
         messageform = MessageForm(initial={'author':request.user.customer.id})
 
-    context =  {"messageform": messageform, "messages": messages, "customer": customer, "allcustomers": allcustomers, "user": user, "allusers": allusers}
+    context =  {"messageform": messageform, "messages": messages, "customer": customer, "customers": customers, "user": user, "users": users}
     return render(request, "dealroom.html", context)
 
 def formtest_view(request, *args, **kwargs):
