@@ -299,7 +299,6 @@ def dealroom_view(request, *args, **kwargs):
     allcustomers = Customer.objects.all()
     user = User.objects.get(pk = request.user.id)
     allusers = User.objects.all()
-    allusers.type()
 
     if request.method == 'POST':
         print(request.POST)
