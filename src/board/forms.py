@@ -70,7 +70,7 @@ class CompanyForm(forms.ModelForm):
         model = Customer
         fields = ['company']
 
-class dealroomForm(forms.ModelForm):
+class ThreadForm(forms.ModelForm):
     class Meta:
-        model: dealRoom
+        model = dealRoom
         fields = '__all__'

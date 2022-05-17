@@ -5,5 +5,14 @@
 {% load static %}
 
 <p>Thread Page</p>
+<form action = "" method = "POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{threadform.as_p}}
+    <input type="submit" value="Submit">
+</form>
+
+{% for thread in threads %}
+    <p>{{thread.name}}</p>
+{% endfor %}
 
 {% endblock %}

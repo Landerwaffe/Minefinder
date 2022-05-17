@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<p>Dynamic test</p>
+
+{% for message in messages %}
+    <p>{{message.author}}</p>
+{% endfor %}
+
+{% endblock %}

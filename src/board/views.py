@@ -327,3 +327,25 @@ def formtest_view(request, *args, **kwargs):
 
     context = {"messageform": messageform}
     return render(request, "formtest.html", context)
+
+def thread_view(request, *args, **kwargs):
+    threads = dealRoom.objects.all()
+    
+    if request.method == 'POST':
+        print(request.POST)
+        threadform = ThreadForm(request.POST, request.FILES)
+        print(threadform)
+        if threadform.is_valid():
+            print('FORM IS SAVED')
+            threadform.save()
+    else:
+        threadform = ThreadForm()
+
+    context = {"threadform": threadform, "threads": threads}
+    return render(request, "thread.html", context)
+
+def dynamic_view(request, *args, **kwargs):
+    messages = Message.objects.all()
+    
+    context = {"messages": messages}
+    return render(request,"dynamic.html", context)
