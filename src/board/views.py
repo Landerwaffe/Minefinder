@@ -346,6 +346,7 @@ def thread_view(request, *args, **kwargs):
 
 def dynamic_view(request, *args, **kwargs):
     messages = Message.objects.all()
-    
-    context = {"messages": messages}
+    get = request.GET
+
+    context = {"messages": messages, "get": get}
     return render(request,"dynamic.html", context)
