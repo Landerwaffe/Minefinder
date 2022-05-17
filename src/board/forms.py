@@ -69,3 +69,8 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = ['company']
+
+class dealroomForm(forms.ModelForm):
+    class Meta:
+        model: dealRoom
+        fields = '__all__'

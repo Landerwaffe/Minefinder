@@ -35,3 +35,10 @@ class Message(models.Model):
     def __str__(self):
         return self.title
 
+class dealRoom(models.Model):
+
+    name = models.CharField(max_length = 50)
+    replies = models.ForeignKey(Message, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.name
