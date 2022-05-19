@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'users',
     'home',
+    'faq',
 ]
 
 MIDDLEWARE = [
@@ -91,9 +92,9 @@ DATABASES = {
     # Host the database via XAMPP on localhost:3306, follow instructions in .DB/PMDB.sql commenting.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pmdb',
+        'NAME': 'test',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'mysql',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {

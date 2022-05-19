@@ -17,6 +17,7 @@ urlpatterns = [
     # ckeditor
     path(r'ckeditor/', include('ckeditor_uploader.urls')),
     path('chat/', include('chat.urls')),
+    path('', include('faq.urls')),
     # media
     re_path(r'media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
