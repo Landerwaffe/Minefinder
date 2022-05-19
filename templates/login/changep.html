@@ -1,0 +1,285 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block title %}
+Change password
+{%endblock %}
+{% block content %}
+<div>
+  <img class="img-responsive bannerimg" src="/static/images/backgroundU.png" alt="banner">
+</div>
+<div style="background-color:rgb(216,216,216);">
+  <div class="row">
+    <div class="infotable row">
+      <div class="col-md-3">
+        <div style="height:50px"></div>
+        <div>
+          <img src="/media/avatar/{{now_user.profile}}" style="width:200px;height:200px;margin:0 auto"
+            class="img-responsive img-circle" alt="">
+          <h4 style="margin:10px auto 0;text-align: center;font-size:20px;">
+            {{ now_user.email }}
+          </h4>
+        </div>
+        <div style="height:20px;border-bottom:2px solid #888888 ;"></div>
+        <div class="sidebar">
+          <a href="#Account">
+            <span>Account</span>
+          </a>
+          <a href="#Authentication">
+            <span>Authentication</span>
+          </a>
+          <a href="#Security">
+            <span>Security</h4>
+          </a>
+          <a href="/upload/" class="upload">
+            <span>Upload Project</h4>
+          </a>
+          <a href="/users/logout/" class="upload">
+            <span>Sign out</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-9" style="border-left: 2px solid #888888;">
+        <div style="margin-left:50px">
+          <div style="height:100px"></div>
+          <h2 id="Account">
+            General Account Settings
+          </h2>
+          <div style="border-bottom: 1px solid #888888;width:400px;margin-bottom: 20px;">
+          </div>
+          <table id="table">
+            <tr>
+              <td width="30%">
+                <span>
+                  Name
+                </span>
+              </td>
+              <td width="50%">{{ now_user.name }}</td>
+              <td width="20%">
+                <a href="/users/change/">
+                  Edit
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <span>
+                  Username
+                </span>
+              </td>
+              <td width="50%">{{ now_user.username }}</td>
+              <td width="20%">
+                <a href="/users/change/">
+                  Edit
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <span>
+                  Email
+                </span>
+              </td>
+              <td width="50%">{{ now_user.email }}</td>
+              <td width="20%">
+                <a href="/users/change/">
+                  Edit
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <span>
+                  Contact
+                </span>
+              </td>
+              <td width="50%">{{ now_user.contact }}</td>
+              <td width="20%">
+                <a href="/users/change/">
+                  Edit
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" style="text-align:right;">
+                <a href="/users/image/">
+                  Upload new profile image
+                </a>
+              </td>
+            </tr>
+          </table>
+          <div style="height:150px"></div>
+          <h2 id="Authentication">
+            Authentication
+          </h2>
+          <div style="border-bottom: 1px solid #888888;width:400px;margin-bottom: 20px;">
+          </div>
+          <table id="table">
+            <tr>
+              <td width="30%">
+                <span>
+                  Authenticated
+                </span>
+              </td>
+              <td width="50%">
+                {% if not now_user.authentication %}
+                <div style="color:red">
+                  No
+                </div>
+                {% else %}
+                <div style="color:green">
+                  Yes
+                </div>
+                {% endif %}
+              </td>
+              <td width="20%">
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">
+                <span>
+                  Company Name
+                </span>
+              </td>
+              <td width="50%">{{ now_user.company }}</td>
+              <td width="20%">
+                <a href="/users/change/">
+                  Edit
+                </a>
+              </td>
+            </tr>
+          </table>
+          <div style="height:350px"></div>
+          <h2 id="Security">
+            Security
+          </h2>
+          <div style="border-bottom: 1px solid #888888;width:400px;margin-bottom: 20px;">
+          </div>
+          {% if message %}
+          <div class="alert alert-warning">{{ message }}</div>
+          {% endif %}
+          <form class="form-login" action="/users/changep/" method="post">
+            {% csrf_token %}
+            <table id="table">
+              <tr>
+                <td width="30%">
+                  <span>
+                    User Tiering
+                  </span>
+                </td>
+                <td width="50%">
+                  {% if not now_user.tiering %}
+                  <div style="color:red">
+                    Untrusted
+                  </div>
+                  {% else %}
+                  <div style="color:green">
+                    Trusted
+                  </div>
+                  {% endif %}
+                </td>
+                <td width="20%">
+                </td>
+              </tr>
+              <tr>
+                <td width="30%">
+                  <span>
+                    Password
+                  </span>
+                </td>
+                <td width="50%">
+                  <div class="form-group">
+                    <input type="text" name='password1' class="form-control" placeholder="Curent Password" required>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td width="30%">
+                </td>
+                <td width="50%">
+                  <div class="form-group">
+                    <input type="text" name='password2' class="form-control" placeholder="New Password" required>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align:right;">
+                  <button type="submit" class="btn btn-primary pull-right">submit</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+          <div style="height:400px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:20px"></div>
+</div>
+
+<style>
+  .bannerimg {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  .infotable {
+    width: 90%;
+    margin: -30px auto 0;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  .sidebar {
+    margin: 10px auto 0;
+    text-align: center;
+  }
+
+  .sidebar a {
+    display: block;
+    width: 80%;
+    margin: 20px auto 0;
+    line-height: 50px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .sidebar a span {
+    font-size: 20px;
+  }
+
+  .sidebar .upload span {
+    display: block;
+    border-radius: 25px;
+    background-color: rgb(184, 92, 56);
+    color: #fff;
+  }
+
+  #table {
+    width: 90%;
+    border: 0;
+  }
+
+  #table tr td {
+    line-height: 60px;
+    font-size: 20px;
+    border-top: 0;
+  }
+
+  #table tr td span {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #table tr td a {
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+    text-align: right;
+    color: rgb(184, 92, 56);
+  }
+</style>
+{% include 'home/footer.html' %}
+{% endblock %}

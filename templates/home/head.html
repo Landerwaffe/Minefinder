@@ -1,0 +1,50 @@
+<div class="head">
+  <div class="left">
+    <a href="/">
+      <img src="/static/images/logonew.png" alt="logonew" />
+    </a>
+  </div>
+  <div class="right">
+    <span><a href="/upload/">Upload Project</a></span>
+    <!-- <span><a href="/gallery/">Gallery</a></span> -->
+    <span><a href="/projects/">Deal Room</a></span>
+    <span><a href="/faq/">FAQ</a></span>
+    <span><a href="/maps/">Projects</a></span>
+    {% if request.session.user_name %}
+    <span><a href="/users/info/">{{ request.session.user_name }}</a></span>
+    {% else %}
+    <span><a href="/users/login/">Sign in & Sign up</a></span>
+    {% endif %}
+  </div>
+</div>
+
+
+
+
+<style>
+  .head {
+    height: 150px;
+  }
+
+  .head div {
+    line-height: 150px;
+  }
+
+  .head .left {
+    display: inline-block;
+  }
+
+  .head .right {
+    float: right;
+  }
+
+  .head .right span {
+    padding: 0 2em;
+    font-size: 18px;
+  }
+
+  .head .right span a {
+    color: #000;
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,97 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block title %}
+login
+{%endblock %}
+{% block css %}
+{% endblock %}
+{% block content %}
+<div class="row loginbgi">
+  <div>
+    <img class="img-responsive bannerimg" src="/static/images/splash.jpg" alt="" />
+  </div>
+  <div class="col-md-6 bottom" style="background-color: rgba(92,60,43,0.7);color: #fff">
+    <div style="margin:300px 0 0 20px;">
+      <form class="form-login" action="/users/login/" method="post">
+        {% csrf_token %}
+        {% if message %}
+        <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+        <h2 style="text-align: left;font-size:40px;">Log in to <span
+            style="font-size:54px;color: rgb(184, 92, 56);">Minefinder</span>
+        </h2>
+        <div class="col-sm-10" style="margin: 20px 0 0 20px;">
+          <div class="form-group">
+            {{ login_form.email.label_tag }}
+            {{ login_form.email}}
+          </div>
+          <div class="form-group">
+            {{ login_form.password.label_tag }}
+            {{ login_form.password }}
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn"
+              style="width: 100%;background-color: rgb(184, 92, 56);font-weight:700;font-size:24px;color: #fff;border-radius:10px;">Log
+              In</button>
+          </div>
+          <div style="font-size:20px;">
+            Need an account? <a href="/users/register/" style="color:rgb(224,192,151)">Register here</a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="clearfix"></div>
+    <div class="footer">
+      <span>©2021 - 2020 All rights reserved.</span>
+      <span>Designed & Developed by OreFox Geoscience Pty Ltd</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .form-group {
+    font-size: 24px;
+  }
+
+  .form-group label {
+    font-weight: normal;
+  }
+
+  .form-group input {
+    height: 3em;
+  }
+
+  .loginbgi {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  .bannerimg {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  .bottom {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .footer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 50px;
+  }
+
+  .footer span {
+    display: block;
+    font-size: 20px;
+  }
+</style>
+{% endblock %}

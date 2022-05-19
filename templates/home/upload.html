@@ -1,0 +1,217 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}
+upload
+{%endblock %}
+{% block content %}
+<div class="banner">
+  <img class="img-responsive bannerimg" src="/static/images/upload.png" alt="" />
+</div>
+<div class="clearfix"></div>
+<div style="background-color:rgb(216,216,216);">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 bg2">
+      <div>
+        <h1 style="color:rgb(184,92,56)">
+          Exploration Project Submission Template
+        </h1>
+      </div>
+      <div class="bg">
+        <form class="form-horizontal" action="/upload/" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Project Name *</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="name" name="name" placeholder="Project Name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_adversaried" class="col-sm-5 control-label">Who would you like your project advertised
+              to? *</label>
+            <div class="col-sm-7">
+              <label class="radio-inline">
+                <input type="radio" name="project_adversaried" id="project_adversaried" value="0">private
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_adversaried" id="project_adversaried" value="1">public
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_adversaried" id="project_adversaried" value="2">Registered Users of
+                Minefinder
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="commodity" class="col-sm-5 control-label">What is the main commodity of the project? *</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="commodity" name="commodity" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_loc" class="col-sm-5 control-label">What is the location of the project?*</label>
+            <div class="col-sm-4">
+              <input class="form-control" id="project_loc" name="project_loc" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_region" class="col-sm-5 control-label">What State, Province or Region is the project
+              in?</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="project_region" name="project_region">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_location" class="col-sm-12 control-label">Describe the location of the project</label>
+            <div class="col-sm-10">
+              <textarea rows="10" class="form-control" id="project_location" name="project_location"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_field" class="col-sm-5 control-label">Is this a Greenfields or Brownfields Project
+            </label>
+            <div class="col-sm-6">
+              <label class="radio-inline">
+                <input type="radio" name="project_field" id="project_field" value="0">Greenfields
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_field" id="project_field" value="1">Brownfields
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="project_level" class="col-sm-12 control-label">What level of development is the project
+              at?</label>
+            <div class="col-sm-10">
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="0">Un-recognised potential
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="1">Historical mine
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="2">Evidence of Mineralisation
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="3">Ore Grades Present
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="4">Multiple ore grade intersections
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="5">Resouces
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="project_level" id="project_level" value="6">Extractable Feasibility
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="gis" class="col-sm-5 control-label">You can upload a GIS file of the project area:
+            </label>
+            <div class="col-sm-7">
+              <label>
+                <input type="file" name="gis" id="gis">
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="map" class="col-sm-5 control-label">Upload a picture or map of the project:
+            </label>
+            <div class="col-sm-7">
+              <label>
+                <input type="file" name="map" id="map">
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="brief" class="col-sm-12 control-label">Please write a brief 400 word description of the
+              project</label>
+            <div class="col-sm-10">
+              <textarea rows="10" class="form-control" id="brief" name="brief"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ownership" class="col-sm-12 control-label">Describe the ownership of the project</label>
+            <div class="col-sm-10">
+              <textarea rows="10" class="form-control" id="ownership" name="ownership"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="regional_deposits" class="col-sm-12 control-label">What Regional Deposits are near the
+              project?</label>
+            <div class="col-sm-10">
+              <textarea rows="10" class="form-control" id="regional_deposits" name="regional_deposits"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exploration" class="col-sm-12 control-label">Describe the Exploration Upside of the
+              project</label>
+            <div class="col-sm-10">
+              <textarea rows="10" class="form-control" id="exploration" name="exploration"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group" style="text-align: center;" id="btn">
+            <button type="reset" class="btn">Cancel</button>
+            <button type="submit" class="btn">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div style="height:20px"></div>
+</div>
+
+
+<style>
+  .banner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  .bannerimg {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  .bg {
+    font-size: 20px;
+    background-color: rgb(224, 192, 151);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  .bg2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: #fff;
+    padding: 20px 50px 50px;
+    border-radius: 50px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  textarea {
+    margin-bottom: 40px;
+  }
+
+  .form-horizontal .control-label {
+    text-align: left;
+  }
+
+  #btn button {
+    width: 200px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #fff;
+    background-color: rgb(184, 92, 56);
+    border-radius: 10px;
+    margin: 0 10px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+</style>
+{% endblock %}

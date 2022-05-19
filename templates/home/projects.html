@@ -1,0 +1,124 @@
+{% extends 'home/base.html' %} {% load static %} {% block title %} FAQ
+{%endblock %} {% block content %}
+<div class="banner">
+  <img class="img-responsive bannerimg" src="/static/images/banner1.png" alt="" />
+  <div class="bannertitle">
+    <form class="form-inline" action="/projects/" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="text" name="keyword" class="form-control" />
+      </div>
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div style="background-color: rgb(224, 192, 151)">
+  <div class="row" style="text-align: center; padding-top: 50px">
+    {% for item in projects %}
+    <div class="col-md-5" style="margin-left: 50px;margin-top: 50px">
+      <div class="box">
+        <div style="margin-left: 20px">
+          <div class="clearfix"></div>
+          <div>
+            <div class="col-sm-5">
+              <img src="/media/{{item.gis}}" style="width: 100%; height: 100%;margin-top:20px;" alt="">
+            </div>
+            <div class="col-sm-7">
+              <a href="/dealroom/{{item.id}}">
+                <h2>
+                  {{item.name}}
+                </h2>
+              </a>
+              <p>
+              <h3>
+                {{item.commodity}}
+              </h3>
+              </p>
+              <h3>
+                Listed by:{{item.user}}
+              </h3>
+              <h3>
+                {{item.create_date}}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="height: 100px"></div>
+</div>
+<style>
+  .banner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  .bannerimg {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  .bannertitle {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    margin: 0 auto;
+    bottom: 10px;
+    left: 20px;
+  }
+
+  .form-inline .form-control {
+    width: 20em;
+    margin-right: 1em;
+  }
+
+  .box {
+    background-color: #fff;
+    border-radius: 30px;
+    min-height: 420px;
+    position: relative;
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  .box h2 {
+    color: rgb(184, 92, 56);
+    margin-top: 10px;
+  }
+  .box h3 {
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  .box a {
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    margin-top: 50px;
+    color: rgb(184, 92, 56);
+  }
+
+  .box .more {
+    position: absolute;
+    display: block;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(184, 92, 56);
+    border-radius: 15px;
+    bottom: 50px;
+    right: 50px;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,315 @@
+{% extends "home/base.html" %} {% block title %} Index {%endblock %}
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %} {% endblock stylesheets %} {% block content %}
+<div class="banner">
+  <img class="img-responsive bannerimg" src="/static/images/splash.jpg" alt="" />
+  <div class="bannertitle">
+    <h1>Project promotion and evaluation made smarter</h1>
+    <p>
+      MineFinder is a global platform connecting buyer and sellers of mineral
+      exploration and mining projects.
+    </p>
+  </div>
+</div>
+<div>
+  <h1 style="text-align: center; margin: 100px auto">
+    The MineFinder mission is to get the right projects in front of the right
+    poeple
+  </h1>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="col-sm-8 col-md-offset-2 box">
+      <img src="/static/images/mainp1.png" alt="Buy Projects" class="img-thumbnail" />
+      <h1 style="font-weight: 700">Buy Projects</h1>
+      <p>
+        Search through listings of global mining projects.Then discuss things
+        with the client in our virtual deal room.
+      </p>
+      <a class="col-sm-8 col-md-offset-2 btn" href="/projects/">
+        <span style="font-weight: 700">Search Projects</span>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="col-sm-8 col-md-offset-2 box">
+      <img src="/static/images/mainp2.png" alt="Buy Projects" class="img-thumbnail" />
+      <h1 style="font-weight: 700">Sell Projects</h1>
+      <p>
+        Submit your project and display it through our listings.Then view
+        applications by prospective buyers
+      </p>
+      <a class="col-sm-8 col-md-offset-2 btn" href="/projects/">
+        <span style="font-weight: 700">Submit Projects</span>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="col-sm-8 col-md-offset-2 box">
+      <img src="/static/images/mainp3.png" alt="Buy Projects" class="img-thumbnail" />
+      <h1 style="font-weight: 700">Audit Projects</h1>
+      <p>
+        Run a background check on listed projects to get a better idea of how a
+        company is conducting their business.
+      </p>
+      <a class="col-sm-8 col-md-offset-2 btn" href="/projects/">
+        <span style="font-weight: 700">Find Projects</span>
+      </a>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 236px">
+  <img class="img-responsive bannerimg" src="/static/images/mainp4.png" alt="" />
+</div>
+<div>
+  <h1 style="
+      text-align: center;
+      font-size: 60px;
+      font-weight: 700;
+      margin: 170px auto 80px;
+    ">
+    Existing Solutions
+  </h1>
+</div>
+<div>
+  <h3 style="text-align: center; margin: 0 auto 170px; color: rgb(189, 189, 189)">
+    Disadvantages with the current system
+  </h3>
+</div>
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <div class="col-sm-5" style="display: inline-block; width: 250px; height: 250px">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/dollarc.jpg"
+        alt="" />
+    </div>
+    <div class="col-sm-7">
+      <h2 style="font-size: 20px; line-height: 80px">
+        Bias towards projects with money
+      </h2>
+      <p>
+        Once a project has been uploaded,Minefinder will carry out
+        verification,editing if needed,generate keywords and tags for further
+        data analysis then publish the project to the platform.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="col-sm-5" style="display: inline-block; width: 250px; height: 250px">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/confusedc.jpg"
+        alt="" />
+    </div>
+    <div class="col-sm-7">
+      <h2 style="font-size: 20px; line-height: 80px">Have no set format</h2>
+      <p>
+        Data in each project is set out differently,which makes it difficult to
+        compare or even find the data you need to make a decision.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 40px">
+  <div class="col-md-5 col-md-offset-1">
+    <div class="col-sm-5" style="display: inline-block; width: 250px; height: 250px">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/crumpledc.jpg"
+        alt="" />
+    </div>
+    <div class="col-sm-7">
+      <h2 style="font-size: 20px; line-height: 80px">
+        Payment doesn't guarantee outcome
+      </h2>
+      <p>
+        These websites require money with no guarantee of outcome or quality of
+        projects and require serendipity of the perfect project listing on the
+        system/website you use.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="col-sm-5" style="display: inline-block; width: 250px; height: 250px">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/sellc.jpg" alt="" />
+    </div>
+    <div class="col-sm-7">
+      <h2 style="font-size: 20px; line-height: 80px">
+        Profitable projects unseen
+      </h2>
+      <p>
+        Valuable projects are discarded because of the higher barrier to entry.
+        There's profit to be had in taking less publicized projects.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 100px">
+  <h1 style="
+      text-align: center;
+      margin: 100px auto 0;
+      font-size: 60px;
+      font-weight: 700;
+    ">
+    Newest Projects on Minefinder
+  </h1>
+  <h2 style="text-align: center; margin: 10px auto; color: rgb(189, 189, 189)">
+    MineFinder has a portfolio of available mineral mining and exploration
+    projects.
+  </h2>
+</div>
+<div style="margin-top: 70px; text-align: center">
+  <a href="/projects/" class="search">
+    <span> Search for more projects here </span>
+  </a>
+</div>
+<div class="row">
+  {%for project in projects%}
+  <div class="col-md-4">
+    <div class="col-sm-5" style="display: inline-block; width: 250px; height: 250px">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/media/project/{{project.picture}}"
+        alt="" />
+    </div>
+    <div class="col-sm-7">
+      <h2 style="font-size: 20px; line-height: 80px; color: rgb(184, 92, 56)">
+        {{project.name}}
+      </h2>
+      <p class="text-overflow">{{project.details}}</p>
+      <span style="color: rgb(184, 92, 56)"><a href="{{project.url}}">Read more</a>
+      </span>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+<div style="margin-top: 450px">
+  <h1 style="
+      text-align: center;
+      margin: 100px auto 0;
+      font-size: 60px;
+      font-weight: 700;
+    ">
+    Testimonials
+  </h1>
+</div>
+<div class="row" style="margin: 80px auto">
+  <div class="col-md-3 col-md-offset-1">
+    <div style="height: 200px; background-color: rgb(196, 196, 196)">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/GEA.png" alt="" />
+    </div>
+    <div style="margin-top: 80px">
+      <p>
+        As a prospect generator,we had troubnle getting projects to the big
+        companies,with MineFinder pitching projects is much easier.
+      </p>
+      <h2 style="font-size: 20px; text-align: center; font-weight: 600">
+        ANGELA DUNN
+      </h2>
+      <h2 style="font-size: 20px; text-align: center">MD</h2>
+    </div>
+  </div>
+  <div class="col-md-3 col-md-offset-1">
+    <div style="height: 200px; background-color: rgb(196, 196, 196)">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/MPX.png" alt="" />
+    </div>
+    <div style="margin-top: 80px">
+      <p>
+        MPX identifies,acquires and invests in mineral exploration across
+        Australia.MineFinder has been instrumental in our success.
+      </p>
+      <h2 style="font-size: 20px; text-align: center; font-weight: 600">
+        SIMON COHN
+      </h2>
+      <h2 style="font-size: 20px; text-align: center">Exploration Manager</h2>
+    </div>
+  </div>
+  <div class="col-md-3 col-md-offset-1">
+    <div style="height: 200px">
+      <img class="img-responsive img-rounded" style="width: 100%; height: 100%" src="/static/images/E79.png" alt="" />
+    </div>
+    <div style="margin-top: 80px">
+      <p>
+        The E79 Trust uses MineFinder to evaluate potential early-stage
+        investments.We have used other solutions before and find them very
+        clunky conpared to MineFinder.
+      </p>
+      <h2 style="font-size: 20px; text-align: center; font-weight: 600">
+        CHARLOTTE ANDERSON
+      </h2>
+      <h2 style="font-size: 20px; text-align: center">Director</h2>
+    </div>
+  </div>
+</div>
+
+<style>
+  .banner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  .bannerimg {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  .bannertitle {
+    width: 100%;
+    color: #fff;
+    position: absolute;
+    z-index: 1;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .bannertitle h1 {
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  .bannertitle p {
+    margin-top: 40px;
+    font-size: 20px;
+  }
+
+  .box {
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  .box img {
+    margin-top: 20px;
+    border: 0;
+  }
+
+  .box .btn {
+    font-size: 20px;
+    background-color: rgb(184, 92, 56);
+    line-height: 50px;
+    color: #fff;
+    border-radius: 35px;
+    margin-bottom: 20px;
+  }
+
+  .search {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  .search span {
+    text-align: center;
+    background-color: rgb(184, 92, 56);
+    border-radius: 40px;
+    padding: 30px;
+  }
+
+  .text-overflow {
+    display: inline-block;
+    height: 4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

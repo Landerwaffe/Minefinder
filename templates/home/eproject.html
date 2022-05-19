@@ -1,0 +1,185 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block title %}
+Info
+{%endblock %}
+{% block content %}
+<div>
+  <img class="img-responsive bannerimg" src="/static/images/detail.png" alt="banner">
+</div>
+<div style="background-color:rgb(216,216,216);">
+  <div class="row">
+    <div class="infotable row">
+      <div class="col-md-3">
+        <div style="height:50px"></div>
+        <div>
+          <img src="/media/{{project.gis}}" style="width:200px;height:200px;margin:0 auto"
+            class="img-responsive img-rounded" alt="">
+          <h4 style="margin:10px auto 0;text-align: center;font-size:20px;">
+            {{ project.name }}
+          </h4>
+        </div>
+        <div style="height:20px;border-bottom:2px solid #888888 ;"></div>
+        <div class="sidebar">
+          <a href="#Description">
+            <span>Description</span>
+          </a>
+          <a href="#Location">
+            <span>Location</span>
+          </a>
+          <a href="#Images">
+            <span>Images</span>
+          </a>
+          <a href="/dealroom/{{project.id}}">
+            <span>Deal Room</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-9" style="border-left: 2px solid #888888;">
+        <form action="/projects/edit/{{project.id}}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div style="margin-left:50px">
+            <div style="height:100px"></div>
+            <div>
+              <h2>
+                Project Name
+              </h2>
+              <input class="form-control" id="name" name="name" placeholder="Project Name" value="{{project.name}}"
+                required>
+            </div>
+            <h2 id="Description">
+              Description and Detail
+            </h2>
+            <div>
+              <p>
+                <textarea rows="10" class="form-control" id="brief" name="brief">{{project.brief | safe}}</textarea>
+              </p>
+            </div>
+            <div style="height:50px"></div>
+            <h2 id="Location">
+              Location
+            </h2>
+            <div>
+              <img src="/media/{{project.map}}" class="img-responsive img-rounded" style="width:95%" alt="">
+            </div>
+            <div>
+              <h3>New Location:</h3>
+              <input type="file" name="location" id="location">
+            </div>
+            <div>
+              <h3>New Gis:</h3>
+              <input type="file" name="gis" id="gis">
+            </div>
+            <div style="height:50px"></div>
+            <h2 id="Images">
+              Images
+            </h2>
+            <div>
+              <div class="col-md-6">
+                <img src="/media/{{project.p1}}" class="img-responsive img-rounded" style="width:95%" alt="">
+                <div>
+                  <h3>New Image1:</h3>
+                  <input type="file" name="p1" id="p1">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <img src="/media/{{project.p2}}" class="img-responsive img-rounded" style="width:95%" alt="">
+                <div>
+                  <h3>New Image2:</h3>
+                  <input type="file" name="p2" id="p2">
+                </div>
+              </div>
+            </div>
+            <div style="height:50px"></div>
+            <button type="submit" class="btn">Submit</button>
+            <div style="height:100px"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+<div style="height:20px"></div>
+</div>
+
+<style>
+  .bannerimg {
+    width: 100%;
+    position: relative;
+    z-index: -1;
+  }
+
+  .infotable {
+    width: 90%;
+    margin: -30px auto 0;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+
+  .sidebar {
+    margin: 10px auto 0;
+    text-align: center;
+  }
+
+  .sidebar a {
+    display: block;
+    width: 80%;
+    margin: 20px auto 0;
+    line-height: 50px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .sidebar a span {
+    font-size: 20px;
+  }
+
+  .sidebar .upload span {
+    display: block;
+    border-radius: 25px;
+    background-color: rgb(184, 92, 56);
+    color: #fff;
+  }
+
+  #table {
+    width: 90%;
+    border: 0;
+  }
+
+  #table tr td {
+    line-height: 60px;
+    font-size: 20px;
+    border-top: 0;
+  }
+
+  #table tr td span {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  #table tr td a {
+    font-size: 20px;
+    display: block;
+    text-decoration: none;
+    text-align: right;
+    color: rgb(184, 92, 56);
+  }
+
+  button {
+    width: 200px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #fff;
+    background-color: rgb(184, 92, 56);
+    border-radius: 10px;
+    margin: 0 10px;
+    box-shadow: 2px 2px 2px #888888;
+  }
+</style>
+{% include 'home/footer.html' %}
+{% endblock %}
