@@ -1,3 +1,7 @@
 /src/.idea
 /src/.vscode
 *
+/src/chat/__pycache__
+/src/home/__pycache__
+/src/todo/__pycache__
+/src/users/__pycache__
