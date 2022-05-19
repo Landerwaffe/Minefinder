@@ -4,3 +4,7 @@
 /src/home/__pycache__
 /src/todo/__pycache__
 /src/users/__pycache__
+/src/chat/migrations
+/src/faq/migrations
+/src/home/migrations
+/src/users/migrations

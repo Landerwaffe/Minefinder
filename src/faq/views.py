@@ -41,3 +41,4 @@ def faqs(request, id):
     except:
         return render(request, 'error.html')
     return render(request, 'home/faqs.html', locals())
+

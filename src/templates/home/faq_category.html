@@ -4,13 +4,9 @@
 <div class="banner">
   <img class="img-responsive bannerimg" src="/static/images/faq.png" alt="" />
   <div class="bannertitle">
-    <div class="row" style="text-align: center">
+    <div class="row">
       <div class="col-md-4 col-md-offset-2">
-        {% if request.user.is_authenticated %}
-        <p>Welcome {{request.session.username}}@gmail.com</p>
-        {% else %}
-        <p>Welcome</p>
-        {% endif %}
+        <h1>Welcome {{ request.session.user_name }}<h1>
         <p>How can we help you?</p>
       </div>
       <div class="col-md-4">
