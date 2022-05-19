@@ -91,9 +91,9 @@ DATABASES = {
     # Host the database via XAMPP on localhost:3306, follow instructions in .DB/PMDB.sql commenting.
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
+        'NAME': 'pmdb',
         'USER': 'root',
-        'PASSWORD': 'mysql',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
