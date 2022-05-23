@@ -163,3 +163,8 @@ CKEDITOR_CONFIGS = {
 }
 # CKEDITOR
 CKEDITOR_UPLOAD_PATH = ""
+STATIC_URL = '/static/'
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '')
