@@ -14,11 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static 
-
+from django.views.static import serve
+from django.http import Http404
 # from tasks.views import *
 from board.views import *
 from tasks.views import *
@@ -40,17 +41,12 @@ urlpatterns = [
     # media
     re_path(r'media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
-    re_path('.*', http404),
-    path("", include("home.urls")),
+    # path("", include("home.urls")), this one overrides certain page urls
     # users
     path("users/", include("users.urls")),
     # ckeditor
     path(r'ckeditor/', include('ckeditor_uploader.urls')),
     path('chat/', include('chat.urls')),
-    # media
-    re_path(r'media/(?P<path>.*)$', serve,
-            {'document_root': settings.MEDIA_ROOT}),
-    re_path('.*', http404),
     path('', include('gallery.urls')),
     path('projects/', projects_view, name='projects'),
     path('upload/', upload_view, name='upload'),

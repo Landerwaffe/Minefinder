@@ -38,27 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'board',
     'tasks',
     'channels',
-    'chat',
-
     'users',
     'home',
     'faq',
-    'board',
-    'tasks',
-    'channels',
-    # 'ckeditor',
-    # 'ckeditor_uploader',
-    # 'channels',
     'chat',
-
-    'users',
-    'home',
     'gallery',
-    'faq',
     'ckeditor',
 ]
 
@@ -157,7 +144,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
