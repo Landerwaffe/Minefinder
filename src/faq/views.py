@@ -7,7 +7,7 @@ def faq(request):
     if request.method == "POST":
         keyword = request.POST.get('keyword', None)
         articles = Articles.objects.filter(title__icontains=keyword)
-        return render(request, 'faq_category.html', locals())
+        return render(request, 'home/faq_category.html', locals())
     return render(request, 'home/faq.html', locals())
 
 
