@@ -26,19 +26,19 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
+class dealRoom(models.Model):
+
+    name = models.CharField(max_length = 50)
+
+    def __str__(self):
+        return self.name
 class Message(models.Model):
 
     title = models.CharField(max_length = 50)
     text = models.CharField(max_length = 1000, default = " ")
     author = models.BigIntegerField(default = " ")
+    place = models.ForeignKey(dealRoom, on_delete = models.CASCADE, default = 1)
 
     def __str__(self):
         return self.title
 
-class dealRoom(models.Model):
-
-    name = models.CharField(max_length = 50)
-    replies = models.ForeignKey(Message, on_delete = models.CASCADE)
-
-    def __str__(self):
-        return self.name
