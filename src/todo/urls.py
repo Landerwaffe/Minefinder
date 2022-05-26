@@ -54,7 +54,6 @@ urlpatterns = [
     path('dealroom/<int:ass>', dealroom_view, name = 'dealroom'),
     path('', include('faq.urls')),
     path('thread/', thread_view, name= 'thread'),
-    path('dynamic/<int:author>',dynamic_view, name='dynamic'),
 
     path('formtest/', formtest_view, name='formtest')
     # Paths provided by django.contrib.auth.urls
