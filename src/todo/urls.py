@@ -51,7 +51,7 @@ urlpatterns = [
     path('projects/', projects_view, name='projects'),
     path('upload/', upload_view, name='upload'),
     path('projectdetails/', details_view, name = 'projectdetails'),
-    path('dealroom/<int:ass>', dealroom_view, name = 'dealroom'),
+    path('dealroom/<int:thread>', dealroom_view, name = 'dealroom'),
     path('', include('faq.urls')),
     path('thread/', thread_view, name= 'thread'),
 

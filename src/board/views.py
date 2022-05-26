@@ -287,7 +287,7 @@ def details_view(request, *args, **kwargs):
         "projects": projects,
     })
 
-def dealroom_view(request, ass):
+def dealroom_view(request, thread):
     """
     Deal Room View
     -------------
@@ -299,7 +299,7 @@ def dealroom_view(request, ass):
     customers = Customer.objects.all()
     user = User.objects.get(pk = request.user.id)
     users = User.objects.all()
-    dealroom = dealRoom.objects.get(pk = ass)
+    dealroom = dealRoom.objects.get(pk = thread)
 
     if request.method == 'POST':
         print(request.POST)
