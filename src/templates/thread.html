@@ -11,8 +11,10 @@
     <input type="submit" value="Submit">
 </form>
 
+<p style = "font-size: 36px;"><b>Your Threads</b></p>
 {% for thread in threads %}
-    <a href = "/dealroom/{{thread.id}}">{{thread.name}}</a>
+    <img src = "{% static 'images/GreenHill.jpg' %}" style = "height: 300px;"><br>
+    <a href = "/dealroom/{{thread.id}}" style = "color: #B85C38;"><b>{{thread.name}}<b></a><br>
 {% endfor %}
 
 {% endblock %}
