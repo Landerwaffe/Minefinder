@@ -9,7 +9,7 @@
 
 <div class = "w3-container w3-white" style = "height: 80%; position: relative; padding-top: 20px; padding-bottom: 20px;">
     <p style = "float: left; width: 90%; height: 2560px;text-align: center; margin-left: 5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 50px; position:relative;">
-        <a href = "/"><img src="{{customers.pfp.url}}" alt="pfp" style = "width:170px; left: 4.3%; top: 3%; position: absolute; height: 170px; border-radius: 50%;"></img></a>
+        <a href = "/"><img src="{{customers.pfp.url}}" alt="pfp" style = "width:170px; left: 4.3%; top: 2%; position: absolute; height: 170px; border-radius: 50%;"></img></a>
         <p style = "top: 10%; left: 9.6%; position: absolute; padding: 0px; font-size: 36px;">{{request.user}}</p>
         <hr style = "height: 96%; width: 3px; background-color: #B4B4B4; position: absolute; left: 20%;">
         <hr style = "height: 3px; width: 14%; background-color: #B4B4B4; position: absolute; top: 12%; left: 5.75%;">
@@ -26,13 +26,7 @@
         <p style = "top: 16%; left: 31.6%; position: absolute; padding: 0px;">Contact</p>
         <p style = "top: 16%; left: 65%; position: absolute; padding: 0px;">{{customers.contact}}</p>
         <a id = "myLink4" style = "top: 16%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
-        <p style = "top: 20%; left: 82.2%; position: absolute; padding: 0px; color:#B85C38;">Upload new profile image</p>
-        <form action = "" method = "POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ pfpform.pfp.label }}
-          {{pfpform.pfp}}
-          <input type="submit" value="Submit">
-        </form>
+        <a id = "myLink6" style = "top: 20%; left: 82.2%; position: absolute; padding: 0px; color:#B85C38; cursor: pointer;">Upload new profile image</a>
         <!-- <br><button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:18px 36px;">Search Projects</button> -->
 
         <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>
@@ -132,33 +126,18 @@
 
 </div>
 
- <!-- MODAL TO CROP THE IMAGE -->
-<div class="modal fade" id="modalCrop">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Crop the photo</h4>
-      </div>
-      <div class="modal-body">
-        <img src="" id="image" style="max-width: 100%;">
-      </div>
-      <div class="modal-footer">
-        <div class="btn-group pull-left" role="group">
-          <button type="button" class="btn btn-default js-zoom-in">
-            <span class="glyphicon glyphicon-zoom-in"></span>
-          </button>
-          <button type="button" class="btn btn-default js-zoom-out">
-            <span class="glyphicon glyphicon-zoom-out"></span>
-          </button>
-        </div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
-        <button type="button" class="btn btn-primary js-crop-and-upload">Crop and upload</button>
-      </div>
-    </div>
+<div id="myModal6" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id = "close6" class="close">&times;</span>
+    <form action = "" method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ pfpform.as_p }}
+        <input type="submit" value="Submit">
+    </form>
   </div>
+
 </div>
 {% endblock %}
 
