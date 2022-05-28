@@ -43,6 +43,11 @@ class MessageForm(forms.ModelForm):
         fields = '__all__'
 
 class NameForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(NameForm, self).__init__(*args, **kwargs)
+
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
     class Meta:
         model = User
         fields = ['first_name','last_name']
@@ -52,6 +57,10 @@ class UsernameForm(forms.ModelForm):
         model = User
         fields = ['username']
 class EmailForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(EmailForm, self).__init__(*args, **kwargs)
+
+        self.fields['email'].required = True
     class Meta:
         model = User
         fields = ['email']
@@ -77,28 +86,3 @@ class ThreadForm(forms.ModelForm):
     class Meta:
         model = dealRoom
         fields = '__all__'
-
-class PhotoForm(forms.ModelForm):
-    x = forms.FloatField(widget=forms.HiddenInput())
-    y = forms.FloatField(widget=forms.HiddenInput())
-    width = forms.FloatField(widget=forms.HiddenInput())
-    height = forms.FloatField(widget=forms.HiddenInput())
-
-    class Meta:
-        model = Customer
-        fields = ('pfp', 'x', 'y', 'width', 'height', )
-
-    def save(self):
-        photo = super(PhotoForm, self).save()
-
-        x = self.cleaned_data.get('x')
-        y = self.cleaned_data.get('y')
-        w = self.cleaned_data.get('width')
-        h = self.cleaned_data.get('height')
-
-        image = Image.open(photo.file)
-        cropped_image = image.crop((x, y, w+x, h+y))
-        resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
-        resized_image.save(photo.file.path)
-
-        return photo
