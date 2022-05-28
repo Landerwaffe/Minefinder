@@ -118,6 +118,7 @@ def profile_view(request, *args, **kwargs):
 
     if request.GET.get('Exit') == 'Exit':
         logout(request)
+        return render(request, "splash.html")
 
     if request.method == 'POST':
         print(request.POST)
@@ -191,6 +192,16 @@ def profile_view(request, *args, **kwargs):
     else:
         companyform = CompanyForm()
 
+    if request.method == 'POST':
+        print(request.POST)
+        passwordform = PasswordForm(user = request.user, data = request.POST)
+        print (passwordform)
+        if passwordform.is_valid():
+            print('FORM IS SAVED')
+            passwordform.save()
+    else:
+        passwordform = PasswordForm(user = request.user, data = request.POST)
+
     return render(request, 'profile.html', {
         "customerform": customerform,
         "nameform": nameform,
@@ -199,6 +210,7 @@ def profile_view(request, *args, **kwargs):
         "emailform": emailform,
         "contactform": contactform,
         "companyform": companyform,
+        "passwordform": passwordform,
         "customers": customers,
         "users": a,
     })

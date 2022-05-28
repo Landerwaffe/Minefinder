@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 
 from .models import *
@@ -85,4 +85,9 @@ class CompanyForm(forms.ModelForm):
 class ThreadForm(forms.ModelForm):
     class Meta:
         model = dealRoom
+        fields = '__all__'
+
+class PasswordForm(PasswordChangeForm):
+    class Meta:
+        model = User
         fields = '__all__'

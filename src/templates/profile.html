@@ -31,7 +31,7 @@
 
         <p style = "top: 33%; left: 29%; position: absolute; padding: 0px;"><b>Authentication</b></p>
         <p style = "top: 35%; left: 31.25%; position: absolute; padding: 0px;">Authenticated</p>
-        <p style = "top: 35%; left: 65%; position: absolute; padding: 0px;">{{request.user}}</p>
+        <p style = "top: 35%; left: 65%; position: absolute; padding: 0px;">Yes</p>
         <p style = "top: 37%; left: 31.25%; position: absolute; padding: 0px;">Company Name</p>
         <p style = "top: 37%; left: 65%; position: absolute; padding: 0px;">{{customers.company}}</p>
         <a id = "myLink5" style = "top: 37%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
@@ -40,11 +40,14 @@
         <p style = "top: 68%; left: 31.25%; position: absolute; padding: 0px;">User Tiering</p>
         <p style = "top: 68%; left: 65%; position: absolute; padding: 0px;">Trusted</p>
         <p style = "top: 70%; left: 31.25%; position: absolute; padding: 0px;">Password</p>
+        <p style = "top: 70%; left: 65%; position: absolute; padding: 0px;">********</p>
+        <a id = "myLink7" style = "top: 70%; left: 90%; position: absolute; padding: 0px; color:#B85C38;cursor: pointer;">Edit</a>
+
 
         <button class="button" style = "color:black;background-color:#DFDFDF;font-size:28px;padding:5px 110px; position: absolute; top: 13.5%; left: 6.3%;" name = "Account" value = "Account">Account</button>
         <button class="button" style = "color:black;background-color:#F2F2F2;font-size:28px;padding:5px 70px; position: absolute; top: 17%; left: 6.3%;" name = "Auth" value = "Auth">Authentication</button>
         <button class="button" style = "color:black;background-color:#F2F2F2;font-size:28px;padding:5px 112px; position: absolute; top: 20.5%; left: 6.3%;" name = "Sec" value = "Sec">Security</button>
-        <button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:5px 70px; position: absolute; top: 24%; left: 6.3%;" name = "Upload" value = "Upload">Upload Project</button>
+        <a href = "/upload/" class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:5px 70px; position: absolute; top: 24%; left: 6.3%;" name = "Upload">Upload Project</a>
 
         <form method='get' action='#'>
             <button class="button" style = "color:white;background-color:#B85C38;font-size:28px;padding:5px 90px; position: absolute; top: 90%; left: 7.15%;" name = "Exit" value = "Exit">Sign Out</button>
@@ -134,6 +137,20 @@
     <form action = "" method = "POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ pfpform.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+
+</div>
+
+<div id="myModal7" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id = "close7" class="close">&times;</span>
+    <form action = "" method = "POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ passwordform.as_p }}
         <input type="submit" value="Submit">
     </form>
   </div>
