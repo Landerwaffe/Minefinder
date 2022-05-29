@@ -321,7 +321,7 @@ def dealroom_view(request, thread):
             print('FORM IS SAVED')
             messageform.save()
     else:
-        messageform = MessageForm(initial={'author':request.user.customer.id})
+        messageform = MessageForm(initial={'author':request.user.customer.id, 'place':dealroom})
 
     context =  {"messageform": messageform, "messages": messages, "customer": customer, "customers": customers, "user": user, "users": users, "dealroom": dealroom}
     return render(request, "dealroom.html", context)
