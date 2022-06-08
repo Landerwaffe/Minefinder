@@ -1,9 +1,5 @@
-{% extends 'home/base.html' %}
-{% load static %}
-{% block title %}
-Deal Room
-{%endblock %}
-{% block content %}
+{% extends 'home/base.html' %} {% load static %} {% block title %} FAQ
+{%endblock %} {% block content %}
 <div class="banner">
   <img class="img-responsive bannerimg" src="/static/images/banner2.png" alt="" />
 </div>
@@ -67,6 +63,30 @@ Deal Room
       {% endfor %}
     </div>
   </div>
+  <div style="height: 50px"></div>
+  <ul class="list" style="margin:0 auto;text-align:center;font-size:20px">
+    {% for page in page_list %}
+        {% if request.GET.page %}
+            {% if page == request.GET.page|add:0 %}
+                <a href="?page={{ page }}"
+                   class="btn-sm btn-success btn">{{ page }}</a>
+            {% elif  request.GET.page|add:0 > data.number and page == 1 %}
+                <a href="?page={{ page }}"
+                   class="btn-lg btn-success btn">{{ page }}</a>
+            {% else %}
+                <a href="?page={{ page }}" class="btn-lg btn">{{ page }}</a>
+            {% endif %}
+        {% else %}
+            {% if page == 1 %}
+                <a href="?page={{ page }}"
+                   class="btn-lg btn-success btn">{{ page }}</a>
+            {% else %}
+                <a href="?page={{ page }}" class="btn-lg btn">{{ page }}</a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
+<div style="height: 50px"></div>
   <div class="row">
     <div class="col-md-12" style="margin-top: 50px;">
       <form action="/dealroom/{{project.id}}" method="post" class="form-horizontal">

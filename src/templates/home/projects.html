@@ -1,5 +1,9 @@
-{% extends 'home/base.html' %} {% load static %} {% block title %} FAQ
-{%endblock %} {% block content %}
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}
+projects
+{%endblock %}
+{% block content %}
 <div class="banner">
   <img class="img-responsive bannerimg" src="/static/images/banner1.png" alt="" />
   <div class="bannertitle">
@@ -50,6 +54,29 @@
     {% endfor %}
   </div>
 
+  <div style="height: 100px"></div>
+  <ul class="list" style="margin:0 auto;text-align:center;font-size:20px">
+    {% for page in page_list %}
+        {% if request.GET.page %}
+            {% if page == request.GET.page|add:0 %}
+                <a href="?page={{ page }}"
+                   class="btn-sm btn-success btn">{{ page }}</a>
+            {% elif  request.GET.page|add:0 > data.number and page == 1 %}
+                <a href="?page={{ page }}"
+                   class="btn-lg btn-success btn">{{ page }}</a>
+            {% else %}
+                <a href="?page={{ page }}" class="btn-lg btn">{{ page }}</a>
+            {% endif %}
+        {% else %}
+            {% if page == 1 %}
+                <a href="?page={{ page }}"
+                   class="btn-lg btn-success btn">{{ page }}</a>
+            {% else %}
+                <a href="?page={{ page }}" class="btn-lg btn">{{ page }}</a>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>
   <div style="height: 100px"></div>
 </div>
 <style>

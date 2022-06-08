@@ -1,12 +1,11 @@
-{% extends 'home/base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'home/base.html' %} {% load static %} {% block title %} FAQ
+{%endblock %} {% block content %}
 <div class="banner">
   <img class="img-responsive bannerimg" src="/static/images/faq.png" alt="" />
   <div class="bannertitle">
     <div class="row">
       <div class="col-md-4 col-md-offset-2">
-        <h1>Welcome {{ request.session.user_name }}<h1>
+        <h1>Welcome {{ request.session.user_name }}</h1>
         <p>How can we help you?</p>
       </div>
       <div class="col-md-4">
@@ -25,12 +24,12 @@
 </div>
 <div class="clearfix"></div>
 <div style="background-color: rgb(224, 192, 151)">
-  <div class="row" style="text-align: center; padding-top: 50px; display: flex; justify-content: space-between">
-    <div class="col-md-10 col-md-offset-1" style="width: 1400px">
+  <div class="row" style="text-align: center; padding-top: 200px">
+    <div class="col-md-10 col-md-offset-1">
       <div class="box">
         <div style="margin-left: 20px">
           <div class="clearfix"></div>
-          <h2>{{category}}</h2>
+          <h2>About Projects</h2>
           <div style="border-bottom: 2px solid rgb(184, 92, 56)"></div>
           {% for item in articles %}
           <a href="/faq/{{item.id}}">{{item.title}}</a>

@@ -3,7 +3,10 @@ from django.contrib import admin
 from django.shortcuts import render
 from . import models
 
-admin.site.register(models.User)
+
+@admin.register(models.User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('name', 'username', 'email', 'authentication', 'tiering')
 
 
 @admin.register(models.Email)

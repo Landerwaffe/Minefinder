@@ -10,7 +10,8 @@ class User(models.Model):
         max_length=128, verbose_name="name", blank=True, null=True)
     username = models.CharField(
         max_length=128, verbose_name="username")
-    password = models.CharField(max_length=128, verbose_name="password")
+    password = models.CharField(
+        max_length=128, verbose_name="password", editable=False)
     email = models.CharField(max_length=128, unique=True, verbose_name="email")
     contact = models.CharField(
         max_length=128, verbose_name="phone", blank=True, null=True)

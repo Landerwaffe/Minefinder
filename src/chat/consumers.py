@@ -5,36 +5,36 @@ import datetime
 
 
 class ChatConsumer(WebsocketConsumer):
-    # websocket connect
+    # websocket建立连接时执行方法
     def connect(self):
-        # get chat room from url, and set up a channel
+        # 从url里获取聊天室名字，为每个房间建立一个频道组
         # print(self.scope)
         self.user_name = self.scope['session'].get('user_name', None)
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
 
-        # add channels
+        # 将当前频道加入频道组
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,
             self.channel_name
         )
 
-        # accept all request
+        # 接受所有websocket请求
         self.accept()
 
-    # websocket disconnect
+    # websocket断开时执行方法
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name,
             self.channel_name
         )
 
-    # 从websocket receive
+    # 从websocket接收到消息时执行函数
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
-        # set message to the channel
+        # 发送消息到频道组，频道组调用chat_message方法
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
@@ -44,13 +44,13 @@ class ChatConsumer(WebsocketConsumer):
             }
         )
 
-    # post message
+    # 从频道组接收到消息后执行方法
     def chat_message(self, event):
         message = event['message']
         user = event['user']
         datetime_str = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        # set message to the user
+        # 通过websocket发送消息到客户端
         self.send(text_data=json.dumps({
             'message': f'''User:{user} Time:{datetime_str}:\n{message}'''
         }))

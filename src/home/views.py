@@ -1,13 +1,70 @@
 from django.db.models import Q
-from ast import keyword
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from . import models
 from users.models import User
 # Create your views here.
 
 
+def set_page(data, num, page):
+    """
+    :param data: data
+    :param num:  num
+    :param page: page
+    :return:
+    """
+    p = Paginator(data, num)
+    number = p.num_pages
+    page_range = p.page_range
+    try:
+        page = int(page)
+        data = p.page(page)
+    except:
+        data = p.page(1)
+    if page < 5:
+        page_list = page_range[:5]
+    elif page + 4 > number:
+        page_list = page_range[-5:]
+    else:
+        page_list = page_range[page - 3:page + 2]
+    return data, page_list
+
+
 def index(request):
     return render(request, 'home/index.html')
+
+
+def faq(request):
+    if request.method == "POST":
+        keyword = request.POST.get('keyword', None)
+        articles = models.Articles.objects.filter(title__icontains=keyword)
+        return render(request, 'home/faq_category.html', locals())
+    return render(request, 'home/faq.html', locals())
+
+
+def about(request):
+    articles = models.Articles.objects.filter(article_category=0)
+    return render(request, 'home/faq_category.html', locals())
+
+
+def safety(request):
+    articles = models.Articles.objects.filter(article_category=1)
+    return render(request, 'home/faq_category.html', locals())
+
+
+def evaluation(request):
+    articles = models.Articles.objects.filter(article_category=2)
+    return render(request, 'home/faq_category.html', locals())
+
+
+def rules(request):
+    articles = models.Articles.objects.filter(article_category=3)
+    return render(request, 'home/faq_category.html', locals())
+
+
+def faqs(request, id):
+    article = models.Articles.objects.get(id=id)
+    return render(request, 'home/faqs.html', locals())
 
 
 def upload(request):
@@ -66,6 +123,13 @@ def projects(request):
         projects = models.Projects.objects.filter(
             project_adversaried=1)
     # print(projects)
+    if request.method == 'POST':
+        keyword = request.POST.get('keyword')
+        projects = projects.filter(name__icontains=keyword)
+
+    page = request.GET.get("page", 1)
+    projects, page_list = set_page(projects, 10, page)
+
     return render(request, 'home/projects.html', locals())
 
 
@@ -75,6 +139,9 @@ def dealroom(request, id):
     project = models.Projects.objects.get(id=id)
     editor = project.user_id
     content = models.Messages.objects.filter(project=project)
+
+    page = request.GET.get("page", 1)
+    content, page_list = set_page(content, 10, page)
 
     if request.method == "POST" and user_id:
         text = request.POST.get('text', None)
@@ -153,8 +220,12 @@ def maps(request):
                 address = project[0].project_loc
             # print(address)
     else:
-        places= []
+        places = []
         title = []
+
+        page = request.GET.get("page", 1)
+        projects, page_list = set_page(projects, 5, page)
+
         for i in projects:
             places.append(i.project_loc)
             title.append(i.name)

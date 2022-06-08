@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
     'users',
     'home',
-    'faq',
 ]
 
 MIDDLEWARE = [
@@ -89,17 +88,9 @@ CHANNEL_LAYERS = {
 
 # Database
 DATABASES = {
-    # Host the database via XAMPP on localhost:3306, follow instructions in .DB/PMDB.sql commenting.
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pmdb',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -134,13 +125,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join('staticfiles')
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join('static'),
-)
+if DEBUG:
+    STATICFILES_DIRS = (os.path.join('static'),)
+else:
+    STATIC_ROOT = os.path.join('static')
+
 
 MEDIA_URL = '/media/'
 
