@@ -13,5 +13,5 @@ class RegisterForm(forms.Form):
         attrs={'class': 'form-control', 'placeholder': 'company@gmail.com'}))
     password1 = forms.CharField(label="Password", max_length=256,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password2 = forms.CharField(label="Reinput Password", max_length=256,
+    password2 = forms.CharField(label="Confirm Password", max_length=256,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
