@@ -34,39 +34,6 @@ def index(request):
     return render(request, 'home/index.html')
 
 
-def faq(request):
-    if request.method == "POST":
-        keyword = request.POST.get('keyword', None)
-        articles = models.Articles.objects.filter(title__icontains=keyword)
-        return render(request, 'home/faq_category.html', locals())
-    return render(request, 'home/faq.html', locals())
-
-
-def about(request):
-    articles = models.Articles.objects.filter(article_category=0)
-    return render(request, 'home/faq_category.html', locals())
-
-
-def safety(request):
-    articles = models.Articles.objects.filter(article_category=1)
-    return render(request, 'home/faq_category.html', locals())
-
-
-def evaluation(request):
-    articles = models.Articles.objects.filter(article_category=2)
-    return render(request, 'home/faq_category.html', locals())
-
-
-def rules(request):
-    articles = models.Articles.objects.filter(article_category=3)
-    return render(request, 'home/faq_category.html', locals())
-
-
-def faqs(request, id):
-    article = models.Articles.objects.get(id=id)
-    return render(request, 'home/faqs.html', locals())
-
-
 def upload(request):
     user_id = request.session.get('user_id', None)
     if not user_id:
