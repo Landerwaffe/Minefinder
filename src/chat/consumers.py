@@ -5,36 +5,36 @@ import datetime
 
 
 class ChatConsumer(WebsocketConsumer):
-    # websocket建立连接时执行方法
+    
     def connect(self):
-        # 从url里获取聊天室名字，为每个房间建立一个频道组
+        # Get the chat room name from the url and create a channel group for each room
         # print(self.scope)
         self.user_name = self.scope['session'].get('user_name', None)
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
 
-        # 将当前频道加入频道组
+        # Add current channel to channel group
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,
             self.channel_name
         )
 
-        # 接受所有websocket请求
+        # Accept all websocket requests
         self.accept()
 
-    # websocket断开时执行方法
+    # Execute method when websocket is disconnected
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name,
             self.channel_name
         )
 
-    # 从websocket接收到消息时执行函数
+    # Execute function when a message is received from websocket
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
-        # 发送消息到频道组，频道组调用chat_message方法
+        # Send a message to the channel group, the channel group calls the chat_message method
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
@@ -44,13 +44,13 @@ class ChatConsumer(WebsocketConsumer):
             }
         )
 
-    # 从频道组接收到消息后执行方法
+    # Execute method after receiving message from channel group
     def chat_message(self, event):
         message = event['message']
         user = event['user']
         datetime_str = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-        # 通过websocket发送消息到客户端
+        # Send message to client via websocket
         self.send(text_data=json.dumps({
             'message': f'''User:{user} Time:{datetime_str}:\n{message}'''
         }))
