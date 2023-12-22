@@ -1,0 +1,319 @@
+<!-- This is the primary template -->
+
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+        <meta charset="utf-8">
+        <title>{{ title|title }} | Minefinder</title>
+        <style>
+                html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption 
+                {margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                font-size: 100%;
+                vertical-align: baseline;
+                background: transparent;}
+
+                .home
+                {background-color: lightgrey;
+                height: 1440px;
+                width: 2560px;
+                }
+
+                .board
+                {background-color: lightgrey;
+                height: 1440px;
+                width: 2560px;
+                }
+
+                #home .title
+                {font-size: 40px;
+                }
+
+                #board .title
+                {font-size: 40px;
+                }
+
+                .boards
+                {font-size: 20px;                        
+                }
+
+                .todo
+                {font-size: 20px;
+                }
+
+                .w3-container 
+                {overflow: hidden;
+                position: sticky;
+                position: -webkit-sticky;
+                font-family: 'Nunito';
+                }
+
+                .w3-container p
+                {padding: 50px 50px;
+                background-color: white;
+                color: black;
+                font-size: 20px;         
+                }
+
+                .w3-container a
+                {padding: 50px 50px;
+                background-color: white;
+                color: black;
+                font-size: 20px;  
+                text-decoration: none;       
+                }
+
+                .container 
+                {position: relative;
+                text-align: center;
+                color: black;
+                }   
+                
+                .list
+                {height: 800px;
+                width: 400px;
+                background-color: grey;
+                text-align: center;
+                float: left;
+                margin: 15px;
+                }
+
+                .card
+                {padding: 10px;
+                background-color:white;
+                }
+
+                /* The Modal (background) */
+                .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: red(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                }
+
+                /* Modal Content/Box */
+                .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto; /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%; /* Could be more or less, depending on screen size */
+                }
+
+                /* The Close Button */
+                .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                }
+
+                .close:hover,
+                .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+                }
+
+                .splash-image {
+                position: relative;
+                font-family: 'Nunito';
+                font-size: 96px;
+                line-height: 48px;
+                text-align: center;
+                }
+
+                .centered {
+                position: absolute;
+                top: 43%;
+                left: 50%;
+                width: 80%;
+                transform: translate(-50%, -50%);
+                letter-spacing: 2px;
+                color: white;
+                }
+
+                .button {
+                background-color: #ddd;
+                border: none;
+                color: black;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 300px;
+                }
+
+                html, body {
+                max-width: 100%;
+                overflow-x: hidden;
+                }
+
+                .ordering{
+                  float:left;
+                }
+
+                a{
+                  text-decoration: none;
+                }
+
+                input[type=text], select {
+                  width: 50%;
+                  padding: 12px 20px;
+                  margin: 8px 0;
+                  display: inline-block;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  box-sizing: border-box;
+                }
+
+                .wrapper {
+                  min-height: 100%;
+                  height: auto !important;
+                  height: 100%;
+                  margin: 0 auto -142px; /* the bottom margin is the negative value of the footer's height */
+                }
+                
+                .footer, .push {
+                  height: 142px; /* .push must be the same height as .footer */
+                }
+                              
+        </style>
+</head>
+
+<body style = "font-family: sans-serif;">
+        {% include 'navbar.html' %}
+
+        {% block content %}
+        Replace Me
+        {% endblock %}
+
+        {% include 'footer.html' %}
+</body>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+var modal2 = document.getElementById("myModal2");
+var modal3 = document.getElementById("myModal3");
+var modal4 = document.getElementById("myModal4");
+var modal5 = document.getElementById("myModal5");
+var modal6 = document.getElementById("myModal6");
+var modal7 = document.getElementById("myModal7");
+
+// Get the link that opens the modal
+var link = document.getElementById("myLink");
+var link2 = document.getElementById("myLink2");
+var link3 = document.getElementById("myLink3");
+var link4 = document.getElementById("myLink4");
+var link5 = document.getElementById("myLink5");
+var link6 = document.getElementById("myLink6");
+var link7 = document.getElementById("myLink7");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementById("close2");
+var span3 = document.getElementById("close3");
+var span4 = document.getElementById("close4");
+var span5 = document.getElementById("close5");
+var span6 = document.getElementById("close6");
+var span7 = document.getElementById("close7");
+
+// When the user clicks on the link, open the modal
+link.onclick = function() {
+  modal.style.display = "block";
+}
+
+link2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+link3.onclick = function() {
+  modal3.style.display = "block";
+}
+
+link4.onclick = function() {
+  modal4.style.display = "block";
+}
+
+link5.onclick = function() {
+  modal5.style.display = "block";
+}
+
+link6.onclick = function() {
+  modal6.style.display = "block";
+}
+
+link7.onclick = function() {
+  modal7.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+span3.onclick = function() {
+  modal3.style.display = "none";
+}
+
+span4.onclick = function() {
+  modal4.style.display = "none";
+}
+
+span5.onclick = function() {
+  modal5.style.display = "none";
+}
+
+span6.onclick = function() {
+  modal6.style.display = "none";
+}
+
+span7.onclick = function() {
+  modal7.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+  if (event.target == modal3) {
+    modal3.style.display = "none";
+  }
+  if (event.target == modal4) {
+    modal4.style.display = "none";
+  }
+  if (event.target == modal5) {
+    modal5.style.display = "none";
+  }
+  if (event.target == modal6) {
+    modal6.style.display = "none";
+  }
+  if (event.target == modal7) {
+    modal7.style.display = "none";
+  }
+}   
+
+</script>
+
+</html>
